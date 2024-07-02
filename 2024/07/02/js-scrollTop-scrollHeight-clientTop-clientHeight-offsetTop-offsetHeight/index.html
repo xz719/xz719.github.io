@@ -13,20 +13,28 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/tags/js-基础/"/>
+    <link rel="canonical" href="http://example.com/2024/07/02/js-scrolltop-scrollheight-clienttop-clientheight-offsettop-offsetheight/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="6dianbiqi">
-<meta property="og:type" content="website">
-<meta property="og:title" content="6dianbiqi&#39;s blog">
-<meta property="og:url" content="http://example.com/tags/js-%E5%9F%BA%E7%A1%80/index.html">
+        <meta name="description" content="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight1. scrollTop 与 scrollHeight1.1 scrollTopscrollTop 是这六个属性中唯一一个可写的属性。 Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。 一个元素的 scrollTop 值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight">
+<meta property="og:url" content="http://example.com/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/index.html">
 <meta property="og:site_name" content="6dianbiqi&#39;s blog">
-<meta property="og:description" content="6dianbiqi">
+<meta property="og:description" content="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight1. scrollTop 与 scrollHeight1.1 scrollTopscrollTop 是这六个属性中唯一一个可写的属性。 Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。 一个元素的 scrollTop 值">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fb72858c789d4d62abf04b5ac49cdc35.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d48224fea8774b82bdfdc020aea349fd.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1af02d4ffd944ffaa96a8da9563ddc2c.png#pic_center">
+<meta property="article:published_time" content="2024-07-02T10:38:59.000Z">
+<meta property="article:modified_time" content="2024-07-02T10:39:56.774Z">
 <meta property="article:author" content="6dianbiqi">
+<meta property="article:tag" content="js 基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center">
     
     
     <!--- Icon Part-->
@@ -38,7 +46,7 @@
     
     <title>
         
-            标签: js 基础 -
+            js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight -
         
         6dianbiqi&#39;s blog
     </title>
@@ -542,59 +550,300 @@
             <div class="main-content">
 
                 
-                    <div class="tag-container">
-	<div class="tag-name">
-		<i class="fa-solid fa-tag"></i>&nbsp;js 基础
-	</div>
-	<div class="tag-post-list">
-		
-<div class="archive-list-container">
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">2</span>
-            </div>
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
             
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/cat.svg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">6dianbiqi</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-07-02 18:38:59</span>
+        <span class="mobile">2024-07-02 18:38:59</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-07-02 18:39:56</span>
+            <span class="mobile">2024-07-02 18:39:56</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
                 
-                    
-                    
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-02'>
-                    
-                    <a href="/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/" class="block overflow-hidden w-fit">
-                        <span class="article-title my-0.5 text-2xl">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</span>
-                    </a>
-                    
                 
-                    
                     
                         
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-12'>
+                        <li>
+                            <a href="/categories/base/">base</a>&nbsp;
+                        </li>
                     
-                    <a href="/2024/06/12/js-DOM-%E5%92%8C-BOM/" class="block overflow-hidden w-fit">
-                        <span class="article-title my-0.5 text-2xl">js DOM 和 BOM</span>
-                    </a>
                     
                 
-                </li> <!-- Ensure the last item is properly closed -->
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/base/js/">js</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/base/js/base/">base</a>&nbsp;
+                        </li>
+                    
+                    
+                
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/js-%E5%9F%BA%E7%A1%80/">js 基础</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
-	</div>
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <meta name="referrer" content="no-referrer"/>
+
+<h1 id="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight"><a href="#scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight" class="headerlink" title="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight"></a>scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight</h1><h2 id="1-scrollTop-与-scrollHeight"><a href="#1-scrollTop-与-scrollHeight" class="headerlink" title="1. scrollTop 与 scrollHeight"></a>1. scrollTop 与 scrollHeight</h2><h3 id="1-1-scrollTop"><a href="#1-1-scrollTop" class="headerlink" title="1.1 scrollTop"></a>1.1 scrollTop</h3><p>scrollTop 是这六个属性中唯一一个可写的属性。</p>
+<p><code>Element.scrollTop</code> 属性可以获取或设置一个元素的内容<strong>垂直滚动的像素数</strong>。</p>
+<p>一个元素的 <code>scrollTop</code> 值是<strong>这个元素的顶部到视口可见内容（的顶部）的距离的度量</strong>。当一个元素的内容没有产生垂直方向的滚动条，那么它的 <code>scrollTop</code> 值为0。</p>
+<p>如下图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>由于这个属性是可写的，其可以被设置为任何整数值，但在赋值时有以下注意点：</p>
+<ul>
+<li>如果一个元素不能被滚动，那么赋值后，<code>scrollTop</code> 属性仍将被设置为0</li>
+<li>设置<code>scrollTop</code>的值小于0，则赋值后，<code>scrollTop</code> 被设为0</li>
+<li>如果设置了超出这个容器可滚动的值, <code>scrollTop</code> 会被设为最大值.</li>
+</ul>
+<p>同时，由于该属性可写的特性，我们经常会使用该属性来实现回到顶部的效果：<code>element.scrollTop = 0</code></p>
+<h3 id="1-2-scrollHeight"><a href="#1-2-scrollHeight" class="headerlink" title="1.2 scrollHeight"></a>1.2 scrollHeight</h3><p><code>Element.scrollHeight</code> 这个<strong>只读</strong>属性是一个元素<strong>内容高度的度量</strong>，包括由于溢出导致的视图中不可见内容。</p>
+<p><code>scrollHeight</code> 的值等于<strong>该元素在不使用滚动条的情况下为了适应视口中所有内容所需的最小高度</strong>，即元素内容的真实高度。</p>
+<p>没有垂直滚动条的情况下，<code>scrollHeight</code>值与元素视图填充所有内容所需要的最小值<code>clientHeight</code>相同。</p>
+<p><code>scrollHeight</code> 包括元素的<code>padding</code>，但不包括元素的<code>border</code>和<code>margin</code>。另外，<code>scrollHeight</code>也包括 <code>::before</code> 和 <code>::after</code>这样的伪元素。</p>
+<p>如下图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/fb72858c789d4d62abf04b5ac49cdc35.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>根据该属性的定义，我们常常利用该属性与 <code>scrollTop</code>、<code>clientHeight</code> 之间的关系来判断元素是否滚动到底部：<code>element.scrollHeight - element.scrollTop === element.clientHeight</code></p>
+<h2 id="2-clientTop-与-clientHeight"><a href="#2-clientTop-与-clientHeight" class="headerlink" title="2. clientTop 与 clientHeight"></a>2. clientTop 与 clientHeight</h2><h3 id="2-1-clientTop"><a href="#2-1-clientTop" class="headerlink" title="2.1 clientTop"></a>2.1 clientTop</h3><p>clientTop 同样是一个只读属性，其表示一个元素顶部边框的宽度，这个宽度并不包括顶部外边距或内边距。</p>
+<h3 id="2-2-clientHeight"><a href="#2-2-clientHeight" class="headerlink" title="2.2 clientHeight"></a>2.2 clientHeight</h3><p>这个属性同样是是只读属性，对于没有定义CSS高度或者内部元素的元素，该属性值为0。</p>
+<p>若定义了高度或内部的元素，则它是<strong>元素内部的高度</strong>(单位像素)，包含<strong>内边距</strong>，但不包括<strong>水平滚动条、边框和外边距</strong>。</p>
+<p>实际上，<code>clientHeight</code> 就是<code>height +  padding - 滚动条</code>的值，即<strong>元素内容在视口中展示的高度</strong></p>
+<p>如下图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/d48224fea8774b82bdfdc020aea349fd.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h2 id="3-offsetTop-与-offsetHeight"><a href="#3-offsetTop-与-offsetHeight" class="headerlink" title="3. offsetTop 与 offsetHeight"></a>3. offsetTop 与 offsetHeight</h2><h3 id="3-1-offsetTop"><a href="#3-1-offsetTop" class="headerlink" title="3.1 offsetTop"></a>3.1 offsetTop</h3><p>要了解 <code>offsetTop</code> 属性，首先需要了解 <code>Element.offsetParent</code> 属性。</p>
+<p> <code>Element.offsetParent</code> 属性指向<strong>最近的包含该元素的定位元素</strong>。如果找不到，则指向最近的 tabel 或 table cell 元素，或者是<strong>根元素</strong>（标准模式下为<code>html</code>；quirks 模式下为<code>body</code>）。另外，当元素的 <code>display</code> 属性设置为 <code>none</code> 时，<code>offsetParent</code> 属性指向 <code>null</code>。</p>
+<p>而 <code>offsetTop</code> 属性，其表示了当前元素相对于其 <code>offsetParent</code> 元素的<strong>顶部内边距</strong>的距离。</p>
+<h3 id="3-2-offsetHeight"><a href="#3-2-offsetHeight" class="headerlink" title="3.2 offsetHeight"></a>3.2 offsetHeight</h3><p><code>HTMLElement.offsetHeight</code> 同样是一个只读属性，它返回该元素的<strong>像素高度</strong>，高度包含该元素的<strong>垂直内边距和边框</strong>，且是一个整数。</p>
+<p>通常，元素的<code>offsetHeight</code>是一种元素CSS高度的衡量标准，包括元素的边框、内边距和元素的水平滚动条（如果存在且渲染的话），但不包含<code>:before</code>或<code>:after</code>等伪类元素的高度。或者说，<code>offsetHeight</code> 是<strong>元素内容、元素边框以及滚动条在视口中展示的高度</strong>。</p>
+<p>如下图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/1af02d4ffd944ffaa96a8da9563ddc2c.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>另外，需要注意的是，当一个元素被隐藏时，该属性返回0。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</li>
+        <li><strong>作者:</strong> 6dianbiqi</li>
+        <li><strong>创建于
+                :</strong> 2024-07-02 18:38:59</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-07-02 18:39:56
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://github.com/xz719/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
 </div>
 
-<div class="tag-paginator">
-	<div class="paginator">
-    <span class="page-number current">1</span>
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/js-%E5%9F%BA%E7%A1%80/">#js 基础</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/06/12/js-DOM-%E5%92%8C-BOM/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">js DOM 和 BOM</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
 </div>
 
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#scrollTop%E3%80%81scrollHeight%E3%80%81clientTop%E3%80%81clientHeight%E3%80%81offsetTop%E4%BB%A5%E5%8F%8AoffsetHeight"><span class="nav-text">scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-scrollTop-%E4%B8%8E-scrollHeight"><span class="nav-text">1. scrollTop 与 scrollHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-scrollTop"><span class="nav-text">1.1 scrollTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-scrollHeight"><span class="nav-text">1.2 scrollHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-clientTop-%E4%B8%8E-clientHeight"><span class="nav-text">2. clientTop 与 clientHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-clientTop"><span class="nav-text">2.1 clientTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-clientHeight"><span class="nav-text">2.2 clientHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-offsetTop-%E4%B8%8E-offsetHeight"><span class="nav-text">3. offsetTop 与 offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-offsetTop"><span class="nav-text">3.1 offsetTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-offsetHeight"><span class="nav-text">3.2 offsetHeight</span></a></li></ol></li></ol></li></ol>
+
+    </div>
 </div>
+        </div>
+    
+</div>
+
 
 
                 
@@ -677,6 +926,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
