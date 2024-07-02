@@ -13,28 +13,32 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/07/02/js-scrolltop-scrollheight-clienttop-clientheight-offsettop-offsetheight/"/>
+    <link rel="canonical" href="http://example.com/2024/07/02/js-执行上下文与执行栈/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight1. scrollTop 与 scrollHeight1.1 scrollTopscrollTop 是这六个属性中唯一一个可写的属性。 Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。 一个元素的 scrollTop 值">
+        <meta name="description" content="执行上下文与执行栈1.执行上下文简单来说，执行上下文是一种对 JS 代码执行环境的抽象概念，即只要有 JS 代码在运行，那么它就一定是运行在执行上下文中。 执行上下文的类型分为三种：  全局执行上下文：有且只有一个，浏览器中的全局对象就是 window 对象，全局执行上下文中的 this 指向这个全局对象 函数执行上下文：存在无数个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight">
-<meta property="og:url" content="http://example.com/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/index.html">
+<meta property="og:title" content="js-执行上下文与执行栈">
+<meta property="og:url" content="http://example.com/2024/07/02/js-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A0%88/index.html">
 <meta property="og:site_name" content="6dianbiqi&#39;s blog">
-<meta property="og:description" content="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight1. scrollTop 与 scrollHeight1.1 scrollTopscrollTop 是这六个属性中唯一一个可写的属性。 Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。 一个元素的 scrollTop 值">
+<meta property="og:description" content="执行上下文与执行栈1.执行上下文简单来说，执行上下文是一种对 JS 代码执行环境的抽象概念，即只要有 JS 代码在运行，那么它就一定是运行在执行上下文中。 执行上下文的类型分为三种：  全局执行上下文：有且只有一个，浏览器中的全局对象就是 window 对象，全局执行上下文中的 this 指向这个全局对象 函数执行上下文：存在无数个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/fb72858c789d4d62abf04b5ac49cdc35.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/d48224fea8774b82bdfdc020aea349fd.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/1af02d4ffd944ffaa96a8da9563ddc2c.png#pic_center">
-<meta property="article:published_time" content="2024-07-02T10:38:59.000Z">
-<meta property="article:modified_time" content="2024-07-02T10:39:56.774Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/49295b28e5044b24af481c50628363f8.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/05ecef07d2c84a76ba510e70e0ca3f94.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/897b195e187d49e38348d03c4dbf1438.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0bb71b129c9a493d916d2da610b3135b.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/820cf4c50e96414a878df9a66d2d757e.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/85619ad7edd3432fbdb45454a0baf852.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/af71ffff3305430ea538ac537f6b66ae.png#pic_center">
+<meta property="article:published_time" content="2024-07-02T10:48:10.000Z">
+<meta property="article:modified_time" content="2024-07-02T10:48:39.000Z">
 <meta property="article:author" content="6dianbiqi">
 <meta property="article:tag" content="js 基础">
+<meta property="article:tag" content="js 执行上下文">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/49295b28e5044b24af481c50628363f8.png#pic_center">
     
     
     <!--- Icon Part-->
@@ -46,7 +50,7 @@
     
     <title>
         
-            js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight -
+            js-执行上下文与执行栈 -
         
         6dianbiqi&#39;s blog
     </title>
@@ -556,7 +560,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</h1>
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">js-执行上下文与执行栈</h1>
                 </div>
             
             </div>
@@ -577,15 +581,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-07-02 18:38:59</span>
-        <span class="mobile">2024-07-02 18:38:59</span>
+        <span class="desktop">2024-07-02 18:48:10</span>
+        <span class="mobile">2024-07-02 18:48:10</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-07-02 18:39:56</span>
-            <span class="mobile">2024-07-02 18:39:56</span>
+            <span class="desktop">2024-07-02 18:48:39</span>
+            <span class="mobile">2024-07-02 18:48:39</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -619,7 +623,7 @@
                             <li>></li>
                         
                         <li>
-                            <a href="/categories/base/js/base/">base</a>&nbsp;
+                            <a href="/categories/base/js/%E8%BF%9B%E9%98%B6/">进阶</a>&nbsp;
                         </li>
                     
                     
@@ -634,6 +638,10 @@
                 
                     <li>
                         <a href="/tags/js-%E5%9F%BA%E7%A1%80/">js 基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/js-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">js 执行上下文</a>&nbsp;
                     </li>
                 
             </ul>
@@ -661,59 +669,163 @@
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <meta name="referrer" content="no-referrer"/>
 
-<h1 id="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight"><a href="#scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight" class="headerlink" title="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight"></a>scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight</h1><h2 id="1-scrollTop-与-scrollHeight"><a href="#1-scrollTop-与-scrollHeight" class="headerlink" title="1. scrollTop 与 scrollHeight"></a>1. scrollTop 与 scrollHeight</h2><h3 id="1-1-scrollTop"><a href="#1-1-scrollTop" class="headerlink" title="1.1 scrollTop"></a>1.1 scrollTop</h3><p>scrollTop 是这六个属性中唯一一个可写的属性。</p>
-<p><code>Element.scrollTop</code> 属性可以获取或设置一个元素的内容<strong>垂直滚动的像素数</strong>。</p>
-<p>一个元素的 <code>scrollTop</code> 值是<strong>这个元素的顶部到视口可见内容（的顶部）的距离的度量</strong>。当一个元素的内容没有产生垂直方向的滚动条，那么它的 <code>scrollTop</code> 值为0。</p>
-<p>如下图：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center"
-                      alt="在这里插入图片描述"
-                ></p>
-<p>由于这个属性是可写的，其可以被设置为任何整数值，但在赋值时有以下注意点：</p>
+<h1 id="执行上下文与执行栈"><a href="#执行上下文与执行栈" class="headerlink" title="执行上下文与执行栈"></a>执行上下文与执行栈</h1><h2 id="1-执行上下文"><a href="#1-执行上下文" class="headerlink" title="1.执行上下文"></a>1.执行上下文</h2><p>简单来说，执行上下文是一种对 <strong>JS 代码执行环境</strong>的抽象概念，即只要有 JS 代码在运行，那么它就一定是运行在执行上下文中。</p>
+<p>执行上下文的类型分为三种：</p>
 <ul>
-<li>如果一个元素不能被滚动，那么赋值后，<code>scrollTop</code> 属性仍将被设置为0</li>
-<li>设置<code>scrollTop</code>的值小于0，则赋值后，<code>scrollTop</code> 被设为0</li>
-<li>如果设置了超出这个容器可滚动的值, <code>scrollTop</code> 会被设为最大值.</li>
+<li><code>全局执行上下文</code>：有且只有一个，浏览器中的全局对象就是 window 对象，全局执行上下文中的 this 指向这个全局对象</li>
+<li><code>函数执行上下文</code>：存在无数个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文</li>
+<li><code>Eval 函数执行上下文</code>：指的是运行在 eval 函数中的代码，很少用而且不建议使用</li>
 </ul>
-<p>同时，由于该属性可写的特性，我们经常会使用该属性来实现回到顶部的效果：<code>element.scrollTop = 0</code></p>
-<h3 id="1-2-scrollHeight"><a href="#1-2-scrollHeight" class="headerlink" title="1.2 scrollHeight"></a>1.2 scrollHeight</h3><p><code>Element.scrollHeight</code> 这个<strong>只读</strong>属性是一个元素<strong>内容高度的度量</strong>，包括由于溢出导致的视图中不可见内容。</p>
-<p><code>scrollHeight</code> 的值等于<strong>该元素在不使用滚动条的情况下为了适应视口中所有内容所需的最小高度</strong>，即元素内容的真实高度。</p>
-<p>没有垂直滚动条的情况下，<code>scrollHeight</code>值与元素视图填充所有内容所需要的最小值<code>clientHeight</code>相同。</p>
-<p><code>scrollHeight</code> 包括元素的<code>padding</code>，但不包括元素的<code>border</code>和<code>margin</code>。另外，<code>scrollHeight</code>也包括 <code>::before</code> 和 <code>::after</code>这样的伪元素。</p>
+<p>例：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/49295b28e5044b24af481c50628363f8.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>在上面的图中，紫色框的部分为全局上下文，而绿色、蓝色和橙色框的部分，则是不同的函数上下文。可以看到，<strong>只有全局上下文中的变量、方法，能够被其它任何上下文访问</strong>。</p>
+<p>但是对于函数上下文，每次调用函数创建一个新的上下文，会创建一个<strong>私有作用域</strong>，函数内部声明的任何变量都不能在当前函数作用域外部直接访问。</p>
+<p>所以，执行上下文的<strong>特点</strong>在于：</p>
+<ul>
+<li>单线程。</li>
+<li>同步执行。</li>
+<li>只有一个全局上下文。</li>
+<li>可有无数个函数上下文。每个函数调用都会创建一个新的函数上下文，哪怕是递归调用。</li>
+</ul>
+<h2 id="2-执行上下文的生命周期"><a href="#2-执行上下文的生命周期" class="headerlink" title="2.执行上下文的生命周期"></a>2.执行上下文的生命周期</h2><p>执行上下文的生命周期包括三个阶段：创建阶段 → 执行阶段 → 回收阶段。</p>
+<ul>
+<li><code>创建阶段</code>：这个阶段后面会详细分析。</li>
+<li><code>执行阶段</code>：执行变量赋值、代码执行</li>
+<li><code>回收阶段</code>：执行上下文出栈，等待虚拟机回收。</li>
+</ul>
+<p>如图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/05ecef07d2c84a76ba510e70e0ca3f94.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<h2 id="3-执行上下文的创建阶段"><a href="#3-执行上下文的创建阶段" class="headerlink" title="3.执行上下文的创建阶段"></a>3.执行上下文的创建阶段</h2><p>每个执行上下文的基本组成如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/897b195e187d49e38348d03c4dbf1438.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>下面来分别对这几项工作以及关键概念进行介绍。</p>
+<h3 id="3-1-生成变量对象"><a href="#3-1-生成变量对象" class="headerlink" title="3.1 生成变量对象"></a>3.1 生成变量对象</h3><h4 id="a-变量对象的创建过程"><a href="#a-变量对象的创建过程" class="headerlink" title="a. 变量对象的创建过程"></a>a. 变量对象的创建过程</h4><p>变量对象(VO)的创建过程如下：</p>
+<ol>
+<li>【建立 <code>arguments</code> 对象】— 检查当前上下文中的参数，并建立 <code>arguments</code> 对象下的<strong>属性与属性值之间的对应关系</strong>。</li>
+<li>【检查当前上下文的函数声明】— 检查当前上下文中使用<code>function</code>关键字进行声明的函数。对于一个函数声明，在变量对象中以函数名建立一个属性，属性值为指向<strong>该函数所在内存地址</strong>的引用。若该函数名的属性已经存在了，则会用新的引用覆盖。</li>
+<li>【检查当前上下文中的变量声明】— 检查当前上下文中的变量声明，每找到一个变量声明，就在变量对象中以变量名建立一个属性，其值默认为<code>undefined</code>。同时，为了防止与变量同名的函数被修改为<code>undefined</code>，则会直接将其跳过，不修改其属性值。</li>
+</ol>
+<p>如图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/0bb71b129c9a493d916d2da610b3135b.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>但是有一件需要注意的事：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;function foo&#x27;</span>) &#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上代码中，变量声明的 foo 遇到函数声明的 foo 会跳过，</span></span><br><span class="line"><span class="comment">// 可是为什么最后 foo 的输出结果仍然是被覆盖了呢？</span></span><br><span class="line"><span class="comment">// 那是因为三条规则仅仅适用于变量对象的创建过程，也就是执行上下文的创建过程。</span></span><br><span class="line"><span class="comment">// 而 foo=20 是在执行上下文的执行过程中运行的，输出结果自然会是20。</span></span><br></pre></td></tr></table></figure></div>
+
+<p>再来看另一个例子：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// ƒ foo() &#123; console.log(&#x27;function foo&#x27;) &#125;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;function foo&#x27;</span>) &#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">20</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p>上面例子的执行顺序为：</p>
+<ol>
+<li>由于这里的 foo 方法并没有参数，所以第一步不做操作</li>
+<li>首先将所有<strong>函数声明</strong>放入变量对象中，即：<code>function foo() &#123; console.log(&#39;function foo&#39;) &#125;</code></li>
+<li>其次将所有<strong>变量声明</strong>放入对象变量中，即：<code>var foo</code>。而此时因为已经存在同名的函数<code>foo()</code>，所以会跳过对 foo 变量的 undefined 赋值。</li>
+<li>然后<strong>执行代码</strong>，即：<code>console.log(foo); foo = 20;</code></li>
+</ol>
+<p>因此，这里输出的 foo 为函数对象，而不是 20。</p>
+<p>其中关键的地方在于：始终将<code>var foo = 20</code>视为两个<strong>分离</strong>的操作，即<code>var foo</code>和<code>foo = 20</code>。从而使得在赋值之前，输出 foo 变量。</p>
+<h4 id="b-变量对象与活动对象"><a href="#b-变量对象与活动对象" class="headerlink" title="b. 变量对象与活动对象"></a>b. 变量对象与活动对象</h4><blockquote>
+<p><strong>变量对象与活动对象其实都是同一个对象，只是处于执行上下文的不同生命周期</strong>。不过只有处于函数调用栈栈顶的执行上下文中的变量对象，才会变成活动对象。</p>
+</blockquote>
+<p>看下面这个例子：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">foo</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>();</span><br></pre></td></tr></table></figure></div>
+
+<p>在全局作用域中调用<code>test()</code>时，<code>test()</code>的执行上下文开始创建。</p>
+<p>在创建过程中，test 方法的执行上下文结构如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">testEC = &#123;</span><br><span class="line">    <span class="comment">// VO 为 Variable Object的缩写，即变量对象</span></span><br><span class="line">    <span class="attr">VO</span>: &#123;</span><br><span class="line">        <span class="comment">//注：在浏览器的展示中，函数的参数可能并不是放在arguments对象中</span></span><br><span class="line">        <span class="attr">arguments</span>: &#123;...&#125;,  </span><br><span class="line">        <span class="attr">foo</span>: <span class="string">&#x27;&lt;foo reference&gt;&#x27;</span>,  <span class="comment">// 表示 foo 的地址引用</span></span><br><span class="line">        <span class="attr">a</span>: <span class="literal">undefined</span>,</span><br><span class="line">        <span class="attr">this</span>: <span class="variable language_">window</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">scopeChain</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>而未进入执行阶段之前，变量对象 VO 中的属性均不能访问！但是进入执行阶段后，<strong>变量对象转为活动对象</strong>，其中的属性均可以被访问，随后开始执行阶段的各项操作。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 执行阶段</span></span><br><span class="line"><span class="comment">// 此时test方法位于函数调用栈的栈顶，所以它的VO被赋值给AO(Active Object 活动对象)</span></span><br><span class="line"><span class="variable constant_">AO</span> = &#123;</span><br><span class="line">    <span class="attr">arguments</span>: &#123;...&#125;,</span><br><span class="line">    <span class="attr">foo</span>: <span class="string">&#x27;&lt;foo reference&gt;&#x27;</span>,</span><br><span class="line">    <span class="attr">a</span>: <span class="number">1</span>,   <span class="comment">// 前面说到过，在执行阶段，上下文会进行变量赋值，所以这里a的值被赋为1</span></span><br><span class="line">    <span class="attr">this</span>: <span class="variable language_">window</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>所以，在上面的例子中，代码的执行顺序如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//创建阶段</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//执行阶段</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// undefined</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">foo</span>()); <span class="comment">// 2</span></span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>();</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="c-全局上下文的变量对象"><a href="#c-全局上下文的变量对象" class="headerlink" title="c. 全局上下文的变量对象"></a>c. 全局上下文的变量对象</h4><p>全局上下文有一个特殊的地方，<strong>它的变量对象，就是<code>window</code>对象</strong>。而这个特殊，在<code>this</code>指向上也同样适用，它的 **<code>this</code> 也是指向 <code>window</code>**。</p>
+<p>除此之外，<strong>全局上下文的生命周期，与程序的生命周期一致</strong>，只要程序运行不结束，比如关掉浏览器窗口，全局上下文就会一直存在。其他所有的上下文环境，都能直接访问全局上下文的属性。</p>
+<h3 id="3-2-创建作用域链"><a href="#3-2-创建作用域链" class="headerlink" title="3.2 创建作用域链"></a>3.2 创建作用域链</h3><blockquote>
+<p>作用域链本质上是一个指向当前环境与上层环境的一系列<strong>变量对象</strong>的指针列表（它只引用但不实际包含变量对象），作用域链保证了<strong>当前执行环境对符合访问权限的变量和函数的有序访问</strong>。</p>
+</blockquote>
+<p>看下面这个例子：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;             </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">out</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">inner</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> c = <span class="number">3</span>;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a + b + c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">inner</span>();          </span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">out</span>();</span><br></pre></td></tr></table></figure></div>
+
+<p>首先，代码开始运行时就创建了【全局上下文环境】，接着运行到 <code>out()</code> 时创建 【<code>out</code>函数的执行上下文】，最后运行到 <code>inner()</code> 时创建【<code>inner</code>函数的执行上下文】，我们设定他们的变量对象分别为 <code>VO(global)</code> ， <code>VO(out)</code> ,  <code>VO(inner)</code> 。</p>
+<p>我们可以直接用一个数组 <code>scopeChain</code> 来表示作用域链，数组的第一项 <code>scopeChain[0]</code> 为作用域链的最前端，而数组的最后一项，为作用域链的最末端。</p>
+<p>注意，<strong>所有作用域链的最末端都为全局变量对象</strong>！</p>
+<ol>
+<li><p>对于<strong>全局作用域链</strong>：由于它只含全局作用域，没有上级，因此它的作用域链只指向本身的全局变量对象。在<strong>查找标识符时只能从本身的全局变量对象中查找</strong>。</p>
+<p>此时的全局上下文环境如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局上下文环境</span></span><br><span class="line">globalEC = &#123;</span><br><span class="line">    <span class="comment">// 全局上下文的变量对象</span></span><br><span class="line">    <span class="attr">VO</span>: &#123;</span><br><span class="line">        <span class="attr">out</span>: <span class="string">&#x27;&lt;out reference&gt;&#x27;</span>,  <span class="comment">// 表示 out 的地址引用</span></span><br><span class="line">        <span class="attr">a</span>: <span class="literal">undefined</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">scopeChain</span>: [<span class="title function_">VO</span>(<span class="variable language_">global</span>)], <span class="comment">// 作用域链</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>对于<strong>函数 <code>out</code> 的作用域链</strong>：可以引用函数 <code>out</code> 本身的变量对象以及全局的变量对象。查找标识符时，<strong>先在函数 <code>out</code> 的变量对象中寻找，找不到的话再去上一级，也就是全局变量对象查找</strong>。</p>
+<p>此时 <code>out</code> 函数的执行上下文环境如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// out函数的执行上下文</span></span><br><span class="line">outEC = &#123;</span><br><span class="line">    <span class="comment">// out函数的变量对象</span></span><br><span class="line">    <span class="attr">VO</span>: &#123;</span><br><span class="line">        <span class="attr">arguments</span>: &#123;...&#125;,</span><br><span class="line">        <span class="attr">inner</span>: <span class="string">&#x27;&lt;inner reference&gt;&#x27;</span>,  <span class="comment">// 表示 inner 的地址引用</span></span><br><span class="line">        <span class="attr">b</span>: <span class="literal">undefined</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">scopeChain</span>: [<span class="title function_">VO</span>(out), <span class="title function_">VO</span>(<span class="variable language_">global</span>)], <span class="comment">// 作用域链</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>如图：</p>
+<p> <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/820cf4c50e96414a878df9a66d2d757e.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+</li>
+<li><p>同样对于<strong>函数 <code>inner</code> 的作用域链</strong>：可以引用函数 <code>inner</code> 本身的变量对象和上一级 <code>out</code> 函数的变量对象以及全局的变量对象。<strong>查找标识符时依次从 <code>inner</code> ， <code>out</code> ，全局变量对象中查找</strong>。</p>
+<p>此时 <code>inner</code> 函数的执行上下文环境如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// inner函数的执行上下文</span></span><br><span class="line">innerEC = &#123;</span><br><span class="line">    <span class="comment">// inner函数的变量对象</span></span><br><span class="line">    <span class="attr">VO</span>: &#123;</span><br><span class="line">        <span class="attr">arguments</span>: &#123;...&#125;,  </span><br><span class="line">        <span class="attr">c</span>: <span class="literal">undefined</span>,</span><br><span class="line">    &#125;,  <span class="comment">// 变量对象</span></span><br><span class="line">    <span class="attr">scopeChain</span>: [<span class="title function_">VO</span>(inner), <span class="title function_">VO</span>(out), <span class="title function_">VO</span>(<span class="variable language_">global</span>)], <span class="comment">// 作用域链</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>如图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/85619ad7edd3432fbdb45454a0baf852.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+</li>
+</ol>
+<p>如此，就完成了作用域链的构建</p>
+<h3 id="3-3-确定-this-指向"><a href="#3-3-确定-this-指向" class="headerlink" title="3.3 确定 this 指向"></a>3.3 确定 this 指向</h3><p>有关 <code>this</code> 的指向问题，见 <a href="./js%20this/js%20this%E6%8C%87%E5%90%91.md">js this指向</a></p>
+<h2 id="4-执行上下文栈"><a href="#4-执行上下文栈" class="headerlink" title="4.执行上下文栈"></a>4.执行上下文栈</h2><p>在代码开始执行时，首先会产生一个<strong>全局执行上下文环境</strong>，调用函数时，会产生<strong>函数执行上下文环境</strong>，函数调用完成后，它的执行上下文环境以及其中的数据都会被销毁，重新回到全局执行环境，网页关闭后全局执行环境也会销毁。其实这是一个【压栈出栈】的过程，全局上下文环境永远在<strong>栈底</strong>，而当前正在执行的函数上下文在<strong>栈顶</strong>。</p>
+<p>例如：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;             <span class="comment">// 1.进入全局上下文环境</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">out</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">inner</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> c = <span class="number">3</span>;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a+b+c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">inner</span>();          <span class="comment">// 3.进入inner函数上下文环境</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">out</span>(); <span class="comment">// 2.进入out函数上下文环境</span></span><br></pre></td></tr></table></figure></div>
+
+<p>↑以上代码的执行会经历以下过程：</p>
+<ol>
+<li>当代码开始执行时就<strong>创建全局执行上下文环境，并将全局上下文入栈</strong>。</li>
+<li>全局上下文入栈后，其中的代码开始执行，进行赋值、函数调用等操作，执行到 <code>out()</code> 时，<strong>激活函数 <code>out</code> 创建自己的执行上下文环境，<code>out</code> 函数上下文入栈</strong>。</li>
+<li><code>out</code> 函数上下文入栈后，其中的代码开始执行，进行赋值、函数调用等操作，执行到 <code>inner()</code> 时，<strong>激活函数 <code>inner</code> 创建自己的执行上下文环境，<code>inner</code> 函数上下文入栈</strong>。</li>
+<li><code>inner</code>函数上下文入栈后，其中的代码开始执行，进行赋值、函数调用、打印等操作，由于里面没有可以生成其他执行上下文的需要，所有代码执行完毕后，**<code>inner</code>函数上下文出栈**。</li>
+<li><code>inner</code>函数上下文出栈，又回到了<code>out</code>函数执行上下文环境，接着执行<code>out</code>函数中后面剩下的代码，由于后面没有可以生成其他执行上下文的需要，所有代码执行完毕后，**<code>out</code>函数上下文出栈**。</li>
+<li><code>out</code>函数上下文出栈后，又回到了全局执行上下文环境，直到浏览器窗口关闭，<strong>全局上下文出栈</strong>。</li>
+</ol>
 <p>如下图：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/fb72858c789d4d62abf04b5ac49cdc35.png#pic_center"
+                     data-src="https://img-blog.csdnimg.cn/af71ffff3305430ea538ac537f6b66ae.png#pic_center"
                       alt="在这里插入图片描述"
                 ></p>
-<p>根据该属性的定义，我们常常利用该属性与 <code>scrollTop</code>、<code>clientHeight</code> 之间的关系来判断元素是否滚动到底部：<code>element.scrollHeight - element.scrollTop === element.clientHeight</code></p>
-<h2 id="2-clientTop-与-clientHeight"><a href="#2-clientTop-与-clientHeight" class="headerlink" title="2. clientTop 与 clientHeight"></a>2. clientTop 与 clientHeight</h2><h3 id="2-1-clientTop"><a href="#2-1-clientTop" class="headerlink" title="2.1 clientTop"></a>2.1 clientTop</h3><p>clientTop 同样是一个只读属性，其表示一个元素顶部边框的宽度，这个宽度并不包括顶部外边距或内边距。</p>
-<h3 id="2-2-clientHeight"><a href="#2-2-clientHeight" class="headerlink" title="2.2 clientHeight"></a>2.2 clientHeight</h3><p>这个属性同样是是只读属性，对于没有定义CSS高度或者内部元素的元素，该属性值为0。</p>
-<p>若定义了高度或内部的元素，则它是<strong>元素内部的高度</strong>(单位像素)，包含<strong>内边距</strong>，但不包括<strong>水平滚动条、边框和外边距</strong>。</p>
-<p>实际上，<code>clientHeight</code> 就是<code>height +  padding - 滚动条</code>的值，即<strong>元素内容在视口中展示的高度</strong></p>
-<p>如下图：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/d48224fea8774b82bdfdc020aea349fd.png#pic_center"
-                      alt="在这里插入图片描述"
-                ></p>
-<h2 id="3-offsetTop-与-offsetHeight"><a href="#3-offsetTop-与-offsetHeight" class="headerlink" title="3. offsetTop 与 offsetHeight"></a>3. offsetTop 与 offsetHeight</h2><h3 id="3-1-offsetTop"><a href="#3-1-offsetTop" class="headerlink" title="3.1 offsetTop"></a>3.1 offsetTop</h3><p>要了解 <code>offsetTop</code> 属性，首先需要了解 <code>Element.offsetParent</code> 属性。</p>
-<p> <code>Element.offsetParent</code> 属性指向<strong>最近的包含该元素的定位元素</strong>。如果找不到，则指向最近的 tabel 或 table cell 元素，或者是<strong>根元素</strong>（标准模式下为<code>html</code>；quirks 模式下为<code>body</code>）。另外，当元素的 <code>display</code> 属性设置为 <code>none</code> 时，<code>offsetParent</code> 属性指向 <code>null</code>。</p>
-<p>而 <code>offsetTop</code> 属性，其表示了当前元素相对于其 <code>offsetParent</code> 元素的<strong>顶部内边距</strong>的距离。</p>
-<h3 id="3-2-offsetHeight"><a href="#3-2-offsetHeight" class="headerlink" title="3.2 offsetHeight"></a>3.2 offsetHeight</h3><p><code>HTMLElement.offsetHeight</code> 同样是一个只读属性，它返回该元素的<strong>像素高度</strong>，高度包含该元素的<strong>垂直内边距和边框</strong>，且是一个整数。</p>
-<p>通常，元素的<code>offsetHeight</code>是一种元素CSS高度的衡量标准，包括元素的边框、内边距和元素的水平滚动条（如果存在且渲染的话），但不包含<code>:before</code>或<code>:after</code>等伪类元素的高度。或者说，<code>offsetHeight</code> 是<strong>元素内容、元素边框以及滚动条在视口中展示的高度</strong>。</p>
-<p>如下图：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/1af02d4ffd944ffaa96a8da9563ddc2c.png#pic_center"
-                      alt="在这里插入图片描述"
-                ></p>
-<p>另外，需要注意的是，当一个元素被隐藏时，该属性返回0。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们可以得到一些结论：</p>
+<ul>
+<li><strong>全局上下文在代码开始执行时就创建，只有唯一的一个，永远在栈底，浏览器窗口关闭时出栈</strong>。</li>
+<li><strong>函数被调用的时候创建上下文环境</strong>。</li>
+<li><strong>只有栈顶的上下文处于活动状态，其变量对象成为活动对象，并执行其中的代码</strong>。</li>
+</ul>
 
         </div>
 
@@ -721,18 +833,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</li>
+        <li><strong>标题:</strong> js-执行上下文与执行栈</li>
         <li><strong>作者:</strong> 6dianbiqi</li>
         <li><strong>创建于
-                :</strong> 2024-07-02 18:38:59</li>
+                :</strong> 2024-07-02 18:48:10</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-07-02 18:39:56
+                    :</strong> 2024-07-02 18:48:39
             </li>
         
         <li>
-            <strong>链接:</strong> https://github.com/xz719/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/
+            <strong>链接:</strong> https://github.com/xz719/2024/07/02/js-执行上下文与执行栈/
         </li>
         <li>
             <strong>
@@ -757,6 +869,10 @@
                         <a href="/tags/js-%E5%9F%BA%E7%A1%80/">#js 基础</a>&nbsp;
                     </li>
                 
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/js-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">#js 执行上下文</a>&nbsp;
+                    </li>
+                
             </ul>
         
 
@@ -768,13 +884,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/07/02/js-%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/"
+                        href="/2024/07/02/js-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">js-函数、变量声明提升</span>
+                                <span class="post-nav-title-item">js-原型与原型链</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -784,10 +900,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/06/12/js-DOM-%E5%92%8C-BOM/"
+                        href="/2024/07/02/js-%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">js DOM 和 BOM</span>
+                                <span class="post-nav-title-item">js-作用域与作用域链</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -850,8 +966,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#scrollTop%E3%80%81scrollHeight%E3%80%81clientTop%E3%80%81clientHeight%E3%80%81offsetTop%E4%BB%A5%E5%8F%8AoffsetHeight"><span class="nav-text">scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-scrollTop-%E4%B8%8E-scrollHeight"><span class="nav-text">1. scrollTop 与 scrollHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-scrollTop"><span class="nav-text">1.1 scrollTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-scrollHeight"><span class="nav-text">1.2 scrollHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-clientTop-%E4%B8%8E-clientHeight"><span class="nav-text">2. clientTop 与 clientHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-clientTop"><span class="nav-text">2.1 clientTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-clientHeight"><span class="nav-text">2.2 clientHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-offsetTop-%E4%B8%8E-offsetHeight"><span class="nav-text">3. offsetTop 与 offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-offsetTop"><span class="nav-text">3.1 offsetTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-offsetHeight"><span class="nav-text">3.2 offsetHeight</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">js-执行上下文与执行栈</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A0%88"><span class="nav-text">执行上下文与执行栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-text">1.执行上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">2.执行上下文的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E5%88%9B%E5%BB%BA%E9%98%B6%E6%AE%B5"><span class="nav-text">3.执行上下文的创建阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%94%9F%E6%88%90%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1"><span class="nav-text">3.1 生成变量对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%88%9B%E5%BB%BA%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="nav-text">3.2 创建作用域链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E7%A1%AE%E5%AE%9A-this-%E6%8C%87%E5%90%91"><span class="nav-text">3.3 确定 this 指向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88"><span class="nav-text">4.执行上下文栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol>
 
     </div>
 </div>

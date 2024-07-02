@@ -13,28 +13,26 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/07/02/js-scrolltop-scrollheight-clienttop-clientheight-offsettop-offsetheight/"/>
+    <link rel="canonical" href="http://example.com/2024/07/02/js-事件模型/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight1. scrollTop 与 scrollHeight1.1 scrollTopscrollTop 是这六个属性中唯一一个可写的属性。 Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。 一个元素的 scrollTop 值">
+        <meta name="description" content="JS 事件模型JavaScript 中的事件模型是一种用于处理用户交互和其他类型事件的机制。它允许开发人员对特定事件做出响应，并执行相应的代码，实际上，事件模型其实就是观察者模式的体现。 1. 了解事件模型JS 的事件模型基于事件驱动编程的概念，它主要有以下几个组成部分：  【事件目标（Event Target）】— 事件目标是触发事件的对象，它可以是文档、窗口、HTML 元素或其他 JS 对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight">
-<meta property="og:url" content="http://example.com/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/index.html">
+<meta property="og:title" content="js-事件模型">
+<meta property="og:url" content="http://example.com/2024/07/02/js-%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="6dianbiqi&#39;s blog">
-<meta property="og:description" content="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight1. scrollTop 与 scrollHeight1.1 scrollTopscrollTop 是这六个属性中唯一一个可写的属性。 Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。 一个元素的 scrollTop 值">
+<meta property="og:description" content="JS 事件模型JavaScript 中的事件模型是一种用于处理用户交互和其他类型事件的机制。它允许开发人员对特定事件做出响应，并执行相应的代码，实际上，事件模型其实就是观察者模式的体现。 1. 了解事件模型JS 的事件模型基于事件驱动编程的概念，它主要有以下几个组成部分：  【事件目标（Event Target）】— 事件目标是触发事件的对象，它可以是文档、窗口、HTML 元素或其他 JS 对">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/fb72858c789d4d62abf04b5ac49cdc35.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/d48224fea8774b82bdfdc020aea349fd.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/1af02d4ffd944ffaa96a8da9563ddc2c.png#pic_center">
-<meta property="article:published_time" content="2024-07-02T10:38:59.000Z">
-<meta property="article:modified_time" content="2024-07-02T10:39:56.774Z">
+<meta property="og:image" content="https://s.poetries.work/gitee/2019/10/319.png">
+<meta property="article:published_time" content="2024-07-02T10:45:17.000Z">
+<meta property="article:modified_time" content="2024-07-02T10:45:47.451Z">
 <meta property="article:author" content="6dianbiqi">
 <meta property="article:tag" content="js 基础">
+<meta property="article:tag" content="js 事件">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center">
+<meta name="twitter:image" content="https://s.poetries.work/gitee/2019/10/319.png">
     
     
     <!--- Icon Part-->
@@ -46,7 +44,7 @@
     
     <title>
         
-            js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight -
+            js-事件模型 -
         
         6dianbiqi&#39;s blog
     </title>
@@ -556,7 +554,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</h1>
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">js-事件模型</h1>
                 </div>
             
             </div>
@@ -577,15 +575,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-07-02 18:38:59</span>
-        <span class="mobile">2024-07-02 18:38:59</span>
+        <span class="desktop">2024-07-02 18:45:17</span>
+        <span class="mobile">2024-07-02 18:45:17</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-07-02 18:39:56</span>
-            <span class="mobile">2024-07-02 18:39:56</span>
+            <span class="desktop">2024-07-02 18:45:47</span>
+            <span class="mobile">2024-07-02 18:45:47</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -619,7 +617,7 @@
                             <li>></li>
                         
                         <li>
-                            <a href="/categories/base/js/base/">base</a>&nbsp;
+                            <a href="/categories/base/js/%E8%BF%9B%E9%98%B6/">进阶</a>&nbsp;
                         </li>
                     
                     
@@ -634,6 +632,10 @@
                 
                     <li>
                         <a href="/tags/js-%E5%9F%BA%E7%A1%80/">js 基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/js-%E4%BA%8B%E4%BB%B6/">js 事件</a>&nbsp;
                     </li>
                 
             </ul>
@@ -661,59 +663,179 @@
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <meta name="referrer" content="no-referrer"/>
 
-<h1 id="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight"><a href="#scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight" class="headerlink" title="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight"></a>scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight</h1><h2 id="1-scrollTop-与-scrollHeight"><a href="#1-scrollTop-与-scrollHeight" class="headerlink" title="1. scrollTop 与 scrollHeight"></a>1. scrollTop 与 scrollHeight</h2><h3 id="1-1-scrollTop"><a href="#1-1-scrollTop" class="headerlink" title="1.1 scrollTop"></a>1.1 scrollTop</h3><p>scrollTop 是这六个属性中唯一一个可写的属性。</p>
-<p><code>Element.scrollTop</code> 属性可以获取或设置一个元素的内容<strong>垂直滚动的像素数</strong>。</p>
-<p>一个元素的 <code>scrollTop</code> 值是<strong>这个元素的顶部到视口可见内容（的顶部）的距离的度量</strong>。当一个元素的内容没有产生垂直方向的滚动条，那么它的 <code>scrollTop</code> 值为0。</p>
-<p>如下图：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center"
-                      alt="在这里插入图片描述"
-                ></p>
-<p>由于这个属性是可写的，其可以被设置为任何整数值，但在赋值时有以下注意点：</p>
+<h1 id="JS-事件模型"><a href="#JS-事件模型" class="headerlink" title="JS 事件模型"></a>JS 事件模型</h1><p>JavaScript 中的事件模型是一种用于处理用户交互和其他类型事件的机制。它允许开发人员对特定事件做出响应，并执行相应的代码，实际上，事件模型其实就是<strong>观察者模式</strong>的体现。</p>
+<h2 id="1-了解事件模型"><a href="#1-了解事件模型" class="headerlink" title="1. 了解事件模型"></a>1. 了解事件模型</h2><p>JS 的事件模型基于事件驱动编程的概念，它主要有以下几个组成部分：</p>
 <ul>
-<li>如果一个元素不能被滚动，那么赋值后，<code>scrollTop</code> 属性仍将被设置为0</li>
-<li>设置<code>scrollTop</code>的值小于0，则赋值后，<code>scrollTop</code> 被设为0</li>
-<li>如果设置了超出这个容器可滚动的值, <code>scrollTop</code> 会被设为最大值.</li>
+<li>【事件目标（Event Target）】— 事件目标是<strong>触发事件的对象</strong>，它可以是文档、窗口、HTML 元素或其他 JS 对象。每个事件目标都可以监听和触发事件。</li>
+<li>【事件监听器（Event Listener）】— 事件监听器是一个<strong>函数</strong>，用于<strong>定义事件发生时要执行的代码</strong>。通过将事件监听器附加到事件目标上，可以告诉 JS 在事件发生时调用指定的函数。</li>
+<li>【事件类型（Event Type）】— 每一种特定的事件都有其对应的事件类型，比如：点击事件（click）、键盘按下事件（keydown）、鼠标移动事件（mousemove）等等。<strong>每个事件类型都有其特定的属性和行为</strong>。</li>
+<li>【事件处理程序（Event Handler）】— 类似事件监听器，事件处理程序也是一个<strong>函数</strong>，它被分配给特定事件类型的监听器，当事件发生时，事件处理程序会被调用，并执行相关的代码。</li>
+<li>【事件对象（Event Object）】— 事件对象是一个包含<strong>有关事件的信息</strong>的对象。它提供了与事件相关的属性和方法，可以用于获取事件的详细信息，如事件目标、事件类型等等。</li>
 </ul>
-<p>同时，由于该属性可写的特性，我们经常会使用该属性来实现回到顶部的效果：<code>element.scrollTop = 0</code></p>
-<h3 id="1-2-scrollHeight"><a href="#1-2-scrollHeight" class="headerlink" title="1.2 scrollHeight"></a>1.2 scrollHeight</h3><p><code>Element.scrollHeight</code> 这个<strong>只读</strong>属性是一个元素<strong>内容高度的度量</strong>，包括由于溢出导致的视图中不可见内容。</p>
-<p><code>scrollHeight</code> 的值等于<strong>该元素在不使用滚动条的情况下为了适应视口中所有内容所需的最小高度</strong>，即元素内容的真实高度。</p>
-<p>没有垂直滚动条的情况下，<code>scrollHeight</code>值与元素视图填充所有内容所需要的最小值<code>clientHeight</code>相同。</p>
-<p><code>scrollHeight</code> 包括元素的<code>padding</code>，但不包括元素的<code>border</code>和<code>margin</code>。另外，<code>scrollHeight</code>也包括 <code>::before</code> 和 <code>::after</code>这样的伪元素。</p>
-<p>如下图：</p>
+<p>事件模型的基本流程如下：</p>
+<ol>
+<li>定位到要监听事件的目标对象</li>
+<li>定义事件监听器，并提供事件处理程序</li>
+<li>将事件监听器附加到目标对象的特定事件类型上</li>
+<li>当事件发生时，事件目标将触发相应的事件，并调用相应的事件处理程序函数</li>
+<li>在事件处理程序函数中，进行相应的处理。</li>
+</ol>
+<p>事件模型可以分为三种：</p>
+<ul>
+<li>原始事件模型（DOM0级）</li>
+<li>标准事件模型（DOM2级）</li>
+<li>IE事件模型</li>
+</ul>
+<p>但在具体介绍这三种事件模型之前，我们还需要了解<strong>事件流</strong>的概念。</p>
+<h2 id="2-事件流"><a href="#2-事件流" class="headerlink" title="2. 事件流"></a>2. 事件流</h2><p>由于 DOM 是一个树结构，如果在父子节点绑定事件时候，当触发子节点的时候，就存在一个顺序问题，这就涉及到了事件流的概念，而不同的事件模型中，事件流是不同的。</p>
+<p>所谓<strong>事件流（Event Flow）</strong>，是指描述事件在 DOM 树中传播和触发的顺序。当事件发生时，它会在 DOM 树的不同节点间传播，最终触发相应的事件处理程序。</p>
+<p>事件流同样有两种主要的模型：</p>
+<ul>
+<li><strong>事件冒泡（Bubbling）</strong>：在冒泡模型中，事件首先在目标元素上触发，然后沿着 DOM 树<strong>向上</strong>冒泡，依次触发父元素的同类事件，即，事件开始时在最具体的元素上触发，然后逐步向上触发，直到到达最顶层的祖先元素。事件冒泡是<strong>默认</strong>的事件流模型，也是最常用的模型。</li>
+<li><strong>事件捕获（Capturing）</strong>：在捕获模型中，事件从最顶层的祖先元素开始，然后沿着 DOM 树<strong>向下</strong>传播，直到到达触发事件的元素。然后，事件在目标元素上触发，最后不再继续传播。捕获模型在实际开发中使用较少，但可以手动开启。</li>
+</ul>
+<p>它们的具体传播过程可以看下面这张图：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/fb72858c789d4d62abf04b5ac49cdc35.png#pic_center"
-                      alt="在这里插入图片描述"
+                     data-src="https://s.poetries.work/gitee/2019/10/319.png"
+                      alt="image"
                 ></p>
-<p>根据该属性的定义，我们常常利用该属性与 <code>scrollTop</code>、<code>clientHeight</code> 之间的关系来判断元素是否滚动到底部：<code>element.scrollHeight - element.scrollTop === element.clientHeight</code></p>
-<h2 id="2-clientTop-与-clientHeight"><a href="#2-clientTop-与-clientHeight" class="headerlink" title="2. clientTop 与 clientHeight"></a>2. clientTop 与 clientHeight</h2><h3 id="2-1-clientTop"><a href="#2-1-clientTop" class="headerlink" title="2.1 clientTop"></a>2.1 clientTop</h3><p>clientTop 同样是一个只读属性，其表示一个元素顶部边框的宽度，这个宽度并不包括顶部外边距或内边距。</p>
-<h3 id="2-2-clientHeight"><a href="#2-2-clientHeight" class="headerlink" title="2.2 clientHeight"></a>2.2 clientHeight</h3><p>这个属性同样是是只读属性，对于没有定义CSS高度或者内部元素的元素，该属性值为0。</p>
-<p>若定义了高度或内部的元素，则它是<strong>元素内部的高度</strong>(单位像素)，包含<strong>内边距</strong>，但不包括<strong>水平滚动条、边框和外边距</strong>。</p>
-<p>实际上，<code>clientHeight</code> 就是<code>height +  padding - 滚动条</code>的值，即<strong>元素内容在视口中展示的高度</strong></p>
-<p>如下图：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/d48224fea8774b82bdfdc020aea349fd.png#pic_center"
-                      alt="在这里插入图片描述"
-                ></p>
-<h2 id="3-offsetTop-与-offsetHeight"><a href="#3-offsetTop-与-offsetHeight" class="headerlink" title="3. offsetTop 与 offsetHeight"></a>3. offsetTop 与 offsetHeight</h2><h3 id="3-1-offsetTop"><a href="#3-1-offsetTop" class="headerlink" title="3.1 offsetTop"></a>3.1 offsetTop</h3><p>要了解 <code>offsetTop</code> 属性，首先需要了解 <code>Element.offsetParent</code> 属性。</p>
-<p> <code>Element.offsetParent</code> 属性指向<strong>最近的包含该元素的定位元素</strong>。如果找不到，则指向最近的 tabel 或 table cell 元素，或者是<strong>根元素</strong>（标准模式下为<code>html</code>；quirks 模式下为<code>body</code>）。另外，当元素的 <code>display</code> 属性设置为 <code>none</code> 时，<code>offsetParent</code> 属性指向 <code>null</code>。</p>
-<p>而 <code>offsetTop</code> 属性，其表示了当前元素相对于其 <code>offsetParent</code> 元素的<strong>顶部内边距</strong>的距离。</p>
-<h3 id="3-2-offsetHeight"><a href="#3-2-offsetHeight" class="headerlink" title="3.2 offsetHeight"></a>3.2 offsetHeight</h3><p><code>HTMLElement.offsetHeight</code> 同样是一个只读属性，它返回该元素的<strong>像素高度</strong>，高度包含该元素的<strong>垂直内边距和边框</strong>，且是一个整数。</p>
-<p>通常，元素的<code>offsetHeight</code>是一种元素CSS高度的衡量标准，包括元素的边框、内边距和元素的水平滚动条（如果存在且渲染的话），但不包含<code>:before</code>或<code>:after</code>等伪类元素的高度。或者说，<code>offsetHeight</code> 是<strong>元素内容、元素边框以及滚动条在视口中展示的高度</strong>。</p>
-<p>如下图：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/1af02d4ffd944ffaa96a8da9563ddc2c.png#pic_center"
-                      alt="在这里插入图片描述"
-                ></p>
-<p>另外，需要注意的是，当一个元素被隐藏时，该属性返回0。</p>
+<p>为了更加具体地了解这两种模型之间的区别，我们可以看下面这两个实例：</p>
+<p>首先准备好 DOM 结构：</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Event Bubbling<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;clickMe&quot;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>先来尝试冒泡模型：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> button = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;clickMe&#x27;</span>);</span><br><span class="line"></span><br><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1.Button&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2.body&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;3.document&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;4.window&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>点击按钮后，输出如下：</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.Button</span><br><span class="line"><span class="number">2</span>.body</span><br><span class="line"><span class="number">3</span>.document</span><br><span class="line"><span class="number">4</span>.window</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到，事件的自下往上传播并依次触发事件处理程序的。</p>
+<p>接下来试试事件捕获模型，我们可以在调用 <code>addEventListener</code> 时，传入第三个参数来区分捕获阶段和冒泡阶段。该参数称为 <code>useCapture</code>，它是一个布尔值，默认为 false（冒泡阶段）。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">button.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1.Button&#x27;</span>);</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2.body&#x27;</span>);</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;3.document&#x27;</span>);</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;4.window&#x27;</span>);</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>点击按钮后，输出如下：</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span>.window</span><br><span class="line"><span class="number">3</span>.document</span><br><span class="line"><span class="number">2</span>.body</span><br><span class="line"><span class="number">1</span>.Button</span><br></pre></td></tr></table></figure></div>
+
+<p>显然，事件是自上往下传播并依次触发事件处理程序的。</p>
+<p>具体例子见：<a href="./tests/index.html">事件冒泡与事件捕获</a></p>
+<p>从上面的例子可以很明显的看出事件冒泡模型和事件捕获模型之前的区别，但更重要的是，它们都体现了<strong>事件传播</strong>的特性。</p>
+<h2 id="3-三种事件模型"><a href="#3-三种事件模型" class="headerlink" title="3. 三种事件模型"></a>3. 三种事件模型</h2><p>了解了事件流，我们就可以进一步来学习三种事件模型了，前面说到过，事件模型可以分为三种：</p>
+<ul>
+<li>原始事件模型（DOM0级）</li>
+<li>标准事件模型（DOM2级）</li>
+<li>IE事件模型</li>
+</ul>
+<p>下面就分别对这三种模型进行介绍</p>
+<h3 id="3-1-原始事件模型（DOM0级）"><a href="#3-1-原始事件模型（DOM0级）" class="headerlink" title="3.1 原始事件模型（DOM0级）"></a>3.1 原始事件模型（DOM0级）</h3><p>原始事件模型绑定监听函数的方式比较简单，有两种方式：</p>
+<ul>
+<li><p>HTML代码中直接绑定</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;fun()&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>通过JS代码绑定</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;.btn&#x27;</span>);</span><br><span class="line">btn.<span class="property">onclick</span> = fun;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>原始事件模型的特性在于：<strong>绑定速度快，且具有很好的跨浏览器优势</strong>。</p>
+<p>但由于绑定速度太快，可能出现页面还未完全加载出来，以至于事件无法正常运行的情况。</p>
+<p>另外，原始事件模型：</p>
+<ol>
+<li>只支持事件冒泡，不支持事件捕获</li>
+<li>每一元素，同一类型的事件只能绑定一次，当希望为同一元素的某一类事件绑定多个监听函数时，后绑定的会覆盖先绑定的。</li>
+</ol>
+<p>要删除 DOM0 级事件的事件处理程序也很简单，只需要将目标元素的对应事件属性置为 null 即可：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn.<span class="property">onclick</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-2-标准事件模型（DOM2级）"><a href="#3-2-标准事件模型（DOM2级）" class="headerlink" title="3.2 标准事件模型（DOM2级）"></a>3.2 标准事件模型（DOM2级）</h3><p>在标准事件模型中，一次事件共有三个过程：</p>
+<ul>
+<li><strong>事件捕获阶段</strong>：事件从 document 一直向下传播到目标元素，依次检查经过的节点是否绑定了事件监听函数，如果有则执行</li>
+<li><strong>事件处理阶段</strong>：事件到达目标元素，触发目标元素的监听函数</li>
+<li><strong>事件冒泡阶段</strong>：事件从目标元素冒泡到 document，依次检查经过的节点是否绑定了事件监听函数，如果有则执行</li>
+</ul>
+<p>标准事件模型中，为事件绑定监听函数的方式如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">addEventListener</span>(eventType, handler, useCapture)</span><br></pre></td></tr></table></figure></div>
+
+<p>各参数如下：</p>
+<ul>
+<li><code>eventType</code>：指定事件类型</li>
+<li><code>handler</code>：事件处理函数</li>
+<li><code>useCapture</code>：boolean类型，用于指定是否在捕获阶段进行处理（实际上就是采用何种事件流模型），置为 false 时，采用事件冒泡；置为 true 时，采用事件捕获。默认值为 false。</li>
+</ul>
+<p>移除事件监听函数的方式如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">removeEventListener</span>(eventType, handler, useCapture)</span><br></pre></td></tr></table></figure></div>
+
+<p>注意，<strong>在移除事件监听器时，这三个参数必须与绑定事件监听器时传入的一致！</strong></p>
+<p>标准事件模型主要有两个特性：</p>
+<ol>
+<li>可以在一个DOM元素上绑定多个事件处理器，各自并不会冲突</li>
+<li>可以不同的阶段中处理事件，从而控制事件处理程序的执行顺序，这一点在前面的例子中实际上已经有所体现了。</li>
+</ol>
+<h3 id="3-3-IE事件模型"><a href="#3-3-IE事件模型" class="headerlink" title="3.3 IE事件模型"></a>3.3 IE事件模型</h3><p>不同于标准事件模型，IE事件模型只有两个阶段：</p>
+<ul>
+<li><strong>事件处理阶段</strong>：事件到达目标元素, 触发目标元素的监听函数。</li>
+<li><strong>事件冒泡阶段</strong>：事件从目标元素冒泡到 document, 依次检查经过的节点是否绑定了事件监听函数，如果有则执行</li>
+</ul>
+<p>因此，<strong>IE事件模型是不支持事件捕获的</strong>。</p>
+<p>IE事件模型中，绑定事件监听函数的方式如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">attachEvent</span>(eventType, handler)</span><br></pre></td></tr></table></figure></div>
+
+<p>要移除事件监听，与标准事件模型中类似，同样要求<strong>参数与绑定时完全一致</strong>：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">detachEvent</span>(eventType, handler)</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="4-事件对象"><a href="#4-事件对象" class="headerlink" title="4. 事件对象"></a>4. 事件对象</h2><p>当事件触发时，默认会创建一个新的对象，并且该对象携带一些属性和方法。并且该对象会作为第一个参数传递给监听函数。</p>
+<p>至于事件对象身上的各个属性，可以参考 <a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event" >官方文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>在这里我们只介绍各事件模型中事件对象的常见属性。</p>
+<p>首先是 IE 事件模型中事件对象的常见属性：</p>
+<ul>
+<li><code>type</code>：用于获取事件类型</li>
+<li><code>srcElement</code>：用于获取事件目标</li>
+<li><code>cancelBubble</code>：将该属性置为 true，可以用于阻止事件冒泡</li>
+<li><code>returnValue</code>：将该属性置为 false，可以用于阻止事件默认行为</li>
+</ul>
+<p>接下来是原始事件模型和标准事件模型中事件对象的常见属性：</p>
+<ul>
+<li><code>type</code>：用于获取事件类型</li>
+<li><code>target</code>：用于获取事件目标</li>
+<li><code>stopPropagation()</code>：阻止事件冒泡</li>
+<li><code>preventDefault()</code>：阻止事件默认行为</li>
+<li><code>stopImmediatePropagation()</code>：新加入的方法，<strong>阻止监听同一事件的其他事件监听器被调用</strong>，可以用于阻止事件冒泡，也可以阻止事件捕获。但需要注意的是，当同一元素身上有多个同类型事件的监听函数，当此事件触发时，如果其中一个监听器中执行了该方法，那么剩下的监听器都不会被调用！</li>
+</ul>
+<h2 id="5-事件流阻止"><a href="#5-事件流阻止" class="headerlink" title="5. 事件流阻止"></a>5. 事件流阻止</h2><p>在实际开发中，经常会遇到需要阻止事件流继续传播或阻止事件的默认行为的情况。</p>
+<h3 id="5-1-阻止默认行为"><a href="#5-1-阻止默认行为" class="headerlink" title="5.1 阻止默认行为"></a>5.1 阻止默认行为</h3><p>一般我们会使用 <code>event.preventDefault()</code> 来阻止事件的默认行为。</p>
+<p>对于该方法，官方文档中给出的介绍如下：</p>
+<blockquote>
+<p>Event 对象的 <code>preventDefault()</code> 方法：如果此事件没有被显式处理，它默认的动作也不应该照常执行。</p>
+</blockquote>
+<p>此外，官方文档中还提到了两个值得注意的点：</p>
+<ol>
+<li><code>preventDefault()</code> 方法并不能阻止事件的继续传播！</li>
+<li>对于不可取消的事件（例如通过 <code>EventTarget.dispatchEvent()</code> 分派的、没有指定 <code>cancelable: true</code> 的事件），<code>preventDefault()</code> 方法不起作用！</li>
+</ol>
+<p>示例参考：<a href="./tests/%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA.html">阻止事件默认行为</a></p>
+<h3 id="5-2-阻止事件冒泡"><a href="#5-2-阻止事件冒泡" class="headerlink" title="5.2 阻止事件冒泡"></a>5.2 阻止事件冒泡</h3><p>一般我们会使用 <code>event.stopPropagation()</code> 来阻止事件冒泡。</p>
+<p>官方文档中是这样描述的：</p>
+<blockquote>
+<p>Event 对象 <code>stopPropagation()</code> 方法阻止捕获和冒泡阶段中当前事件的进一步传播。但是，它不能防止任何默认行为的发生</p>
+</blockquote>
+<p>如果在 IE 事件模型中，则可以使用：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.<span class="property">returnValue</span> = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5-3-阻止事件捕获"><a href="#5-3-阻止事件捕获" class="headerlink" title="5.3 阻止事件捕获"></a>5.3 阻止事件捕获</h3><p>如果我们在标准事件模型中，采用了事件捕获的事件流模型，同时，我们又希望能够阻止事件捕获的进一步传播，我们要怎么做呢？</p>
+<p>根据官方文档中的内容， <code>stopPropagation()</code> 也可以用于阻止事件捕获。</p>
+<h3 id="5-4-stopPropagation-与-stopImmediatePropagation-的区别"><a href="#5-4-stopPropagation-与-stopImmediatePropagation-的区别" class="headerlink" title="5.4 stopPropagation 与 stopImmediatePropagation 的区别"></a>5.4 <code>stopPropagation</code> 与 <code>stopImmediatePropagation</code> 的区别</h3><p>一般来说，只希望事件只触发在目标上，这时候可以使用 <code>stopPropagation</code> 来阻止事件的进一步传播。</p>
+<p>通常认为 <code>stopPropagation</code> 是用来阻止事件冒泡的，其实该函数也可以阻止捕获事件。而 <code>stopImmediatePropagation</code> 同样也能实现阻止事件冒泡和捕获，但其还能阻止该事件目标执行别的注册事件</p>
+<p>即，<code>stopImmediatePropagation()</code> 和 <code>stopPropagation()</code> 的区别在于：后者只会阻止冒泡或者是捕获。但是前者除此之外还会阻止该元素的其他监听器被触发，但是后者就不会。</p>
+<p>如果想要进一步了解 <code>stopImmediatePropagation()</code> 这个方法，可以参考 <a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopImmediatePropagation" >Event stopImmediatePropagation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="6-事件代理-事件委托"><a href="#6-事件代理-事件委托" class="headerlink" title="6. 事件代理&#x2F;事件委托"></a>6. 事件代理&#x2F;事件委托</h2><h3 id="6-1-为什么需要事件委托？"><a href="#6-1-为什么需要事件委托？" class="headerlink" title="6.1 为什么需要事件委托？"></a>6.1 为什么需要事件委托？</h3><p>假设一个 ul 下有 100 个 li 元素，每个 li 有相同的点击事件。如果为每个 li 都添加事件，则会造成 dom 访问次数过多，引起浏览器重绘与重排的次数过多，性能则会降低。</p>
+<p>事件委托就是为了解决这样的问题。此外，使用事件委托后，我们也不需要一个一个地为子元素注销事件。</p>
+<h3 id="6-2-事件委托的原理是什么？"><a href="#6-2-事件委托的原理是什么？" class="headerlink" title="6.2 事件委托的原理是什么？"></a>6.2 事件委托的原理是什么？</h3><p>事件委托实际上是通过<strong>事件冒泡</strong>来实现的，当触发内部元素的点击事件时，点击事件会冒泡到最外层节点上，这样，我们就只需要监听最外层节点的点击事件，并为其准备好事件处理程序，然后在函数中对不同目标进行处理即可！</p>
+<p>实例参考：<a href="./tests/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98.html">事件委托</a></p>
+<h3 id="6-3-事件委托的优势在于？"><a href="#6-3-事件委托的优势在于？" class="headerlink" title="6.3 事件委托的优势在于？"></a>6.3 事件委托的优势在于？</h3><p>从上面其实我们已经知道了事件委托的优势：</p>
+<ul>
+<li>减少了 DOM 操作</li>
+<li>节省内存</li>
+<li>不需要单独为子节点注册、注销事件</li>
+</ul>
 
         </div>
 
@@ -721,18 +843,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</li>
+        <li><strong>标题:</strong> js-事件模型</li>
         <li><strong>作者:</strong> 6dianbiqi</li>
         <li><strong>创建于
-                :</strong> 2024-07-02 18:38:59</li>
+                :</strong> 2024-07-02 18:45:17</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-07-02 18:39:56
+                    :</strong> 2024-07-02 18:45:47
             </li>
         
         <li>
-            <strong>链接:</strong> https://github.com/xz719/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/
+            <strong>链接:</strong> https://github.com/xz719/2024/07/02/js-事件模型/
         </li>
         <li>
             <strong>
@@ -757,6 +879,10 @@
                         <a href="/tags/js-%E5%9F%BA%E7%A1%80/">#js 基础</a>&nbsp;
                     </li>
                 
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/js-%E4%BA%8B%E4%BB%B6/">#js 事件</a>&nbsp;
+                    </li>
+                
             </ul>
         
 
@@ -768,13 +894,13 @@
                     <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="prev"
                         rel="prev"
-                        href="/2024/07/02/js-%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/"
+                        href="/2024/07/02/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/"
                         >
                             <span class="left arrow-icon flex justify-center items-center">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">js-函数、变量声明提升</span>
+                                <span class="post-nav-title-item">js-事件循环机制</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -784,10 +910,10 @@
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/06/12/js-DOM-%E5%92%8C-BOM/"
+                        href="/2024/07/02/js-%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84%E6%88%96%E5%AF%B9%E8%B1%A1/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">js DOM 和 BOM</span>
+                                <span class="post-nav-title-item">js-遍历数组或对象</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -850,8 +976,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#scrollTop%E3%80%81scrollHeight%E3%80%81clientTop%E3%80%81clientHeight%E3%80%81offsetTop%E4%BB%A5%E5%8F%8AoffsetHeight"><span class="nav-text">scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-scrollTop-%E4%B8%8E-scrollHeight"><span class="nav-text">1. scrollTop 与 scrollHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-scrollTop"><span class="nav-text">1.1 scrollTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-scrollHeight"><span class="nav-text">1.2 scrollHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-clientTop-%E4%B8%8E-clientHeight"><span class="nav-text">2. clientTop 与 clientHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-clientTop"><span class="nav-text">2.1 clientTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-clientHeight"><span class="nav-text">2.2 clientHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-offsetTop-%E4%B8%8E-offsetHeight"><span class="nav-text">3. offsetTop 与 offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-offsetTop"><span class="nav-text">3.1 offsetTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-offsetHeight"><span class="nav-text">3.2 offsetHeight</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">js-事件模型</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS-%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B"><span class="nav-text">JS 事件模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BA%86%E8%A7%A3%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B"><span class="nav-text">1. 了解事件模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="nav-text">2. 事件流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%89%E7%A7%8D%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B"><span class="nav-text">3. 三种事件模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%8E%9F%E5%A7%8B%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B%EF%BC%88DOM0%E7%BA%A7%EF%BC%89"><span class="nav-text">3.1 原始事件模型（DOM0级）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B%EF%BC%88DOM2%E7%BA%A7%EF%BC%89"><span class="nav-text">3.2 标准事件模型（DOM2级）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-IE%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.3 IE事件模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="nav-text">4. 事件对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%BA%8B%E4%BB%B6%E6%B5%81%E9%98%BB%E6%AD%A2"><span class="nav-text">5. 事件流阻止</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA"><span class="nav-text">5.1 阻止默认行为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1"><span class="nav-text">5.2 阻止事件冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7"><span class="nav-text">5.3 阻止事件捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-stopPropagation-%E4%B8%8E-stopImmediatePropagation-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">5.4 stopPropagation 与 stopImmediatePropagation 的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%90%86-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="nav-text">6. 事件代理&#x2F;事件委托</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%EF%BC%9F"><span class="nav-text">6.1 为什么需要事件委托？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">6.2 事件委托的原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E7%9A%84%E4%BC%98%E5%8A%BF%E5%9C%A8%E4%BA%8E%EF%BC%9F"><span class="nav-text">6.3 事件委托的优势在于？</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>

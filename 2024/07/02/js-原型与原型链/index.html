@@ -13,28 +13,33 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/07/02/js-scrolltop-scrollheight-clienttop-clientheight-offsettop-offsetheight/"/>
+    <link rel="canonical" href="http://example.com/2024/07/02/js-原型与原型链/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight1. scrollTop 与 scrollHeight1.1 scrollTopscrollTop 是这六个属性中唯一一个可写的属性。 Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。 一个元素的 scrollTop 值">
+        <meta name="description" content="JS对象原型原型是 JS 中对象相互继承特性的机制，这里将解释什么是原型，以及原型链的工作原理、如何为一个对象设置原型，最后，会分析基于原型的继承机制。 1. 原型与原型链这里创建一个对象： 1234567const myObject &#x3D; &#123;  city: &quot;bj&quot;,  greet() &#123;    console.log(&#96;来自 $&#123;this.c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight">
-<meta property="og:url" content="http://example.com/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/index.html">
+<meta property="og:title" content="js-原型与原型链">
+<meta property="og:url" content="http://example.com/2024/07/02/js-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/index.html">
 <meta property="og:site_name" content="6dianbiqi&#39;s blog">
-<meta property="og:description" content="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight1. scrollTop 与 scrollHeight1.1 scrollTopscrollTop 是这六个属性中唯一一个可写的属性。 Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数。 一个元素的 scrollTop 值">
+<meta property="og:description" content="JS对象原型原型是 JS 中对象相互继承特性的机制，这里将解释什么是原型，以及原型链的工作原理、如何为一个对象设置原型，最后，会分析基于原型的继承机制。 1. 原型与原型链这里创建一个对象： 1234567const myObject &#x3D; &#123;  city: &quot;bj&quot;,  greet() &#123;    console.log(&#96;来自 $&#123;this.c">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/fb72858c789d4d62abf04b5ac49cdc35.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/d48224fea8774b82bdfdc020aea349fd.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/1af02d4ffd944ffaa96a8da9563ddc2c.png#pic_center">
-<meta property="article:published_time" content="2024-07-02T10:38:59.000Z">
-<meta property="article:modified_time" content="2024-07-02T10:39:56.774Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ffc02133d53749c49a2dc32dbcd3033a.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/78112a8ad37c4c4192fc731cbfc1a320.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2b10388087f042439dcb1f4418ebd0e1.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/261afb5dd2f54dd3bc96ae776b7c951e.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/direct/90c714a3efaa41ad9f5a095fc1ae67a3.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/direct/f7c4f67ba9884b54ad0bfbda8ac176c0.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/direct/e94a2d4fca45468db67410c11092009a.png#pic_center">
+<meta property="article:published_time" content="2024-07-02T10:49:04.000Z">
+<meta property="article:modified_time" content="2024-07-02T10:49:33.019Z">
 <meta property="article:author" content="6dianbiqi">
 <meta property="article:tag" content="js 基础">
+<meta property="article:tag" content="js 原型">
+<meta property="article:tag" content="js 原型链">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/ffc02133d53749c49a2dc32dbcd3033a.png#pic_center">
     
     
     <!--- Icon Part-->
@@ -46,7 +51,7 @@
     
     <title>
         
-            js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight -
+            js-原型与原型链 -
         
         6dianbiqi&#39;s blog
     </title>
@@ -556,7 +561,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</h1>
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">js-原型与原型链</h1>
                 </div>
             
             </div>
@@ -577,15 +582,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-07-02 18:38:59</span>
-        <span class="mobile">2024-07-02 18:38:59</span>
+        <span class="desktop">2024-07-02 18:49:04</span>
+        <span class="mobile">2024-07-02 18:49:04</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-07-02 18:39:56</span>
-            <span class="mobile">2024-07-02 18:39:56</span>
+            <span class="desktop">2024-07-02 18:49:33</span>
+            <span class="mobile">2024-07-02 18:49:33</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -619,7 +624,7 @@
                             <li>></li>
                         
                         <li>
-                            <a href="/categories/base/js/base/">base</a>&nbsp;
+                            <a href="/categories/base/js/%E8%BF%9B%E9%98%B6/">进阶</a>&nbsp;
                         </li>
                     
                     
@@ -634,6 +639,14 @@
                 
                     <li>
                         <a href="/tags/js-%E5%9F%BA%E7%A1%80/">js 基础</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/js-%E5%8E%9F%E5%9E%8B/">js 原型</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/js-%E5%8E%9F%E5%9E%8B%E9%93%BE/">js 原型链</a>&nbsp;
                     </li>
                 
             </ul>
@@ -661,59 +674,137 @@
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <meta name="referrer" content="no-referrer"/>
 
-<h1 id="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight"><a href="#scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight" class="headerlink" title="scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight"></a>scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight</h1><h2 id="1-scrollTop-与-scrollHeight"><a href="#1-scrollTop-与-scrollHeight" class="headerlink" title="1. scrollTop 与 scrollHeight"></a>1. scrollTop 与 scrollHeight</h2><h3 id="1-1-scrollTop"><a href="#1-1-scrollTop" class="headerlink" title="1.1 scrollTop"></a>1.1 scrollTop</h3><p>scrollTop 是这六个属性中唯一一个可写的属性。</p>
-<p><code>Element.scrollTop</code> 属性可以获取或设置一个元素的内容<strong>垂直滚动的像素数</strong>。</p>
-<p>一个元素的 <code>scrollTop</code> 值是<strong>这个元素的顶部到视口可见内容（的顶部）的距离的度量</strong>。当一个元素的内容没有产生垂直方向的滚动条，那么它的 <code>scrollTop</code> 值为0。</p>
-<p>如下图：</p>
-<p><img  
+<h1 id="JS对象原型"><a href="#JS对象原型" class="headerlink" title="JS对象原型"></a>JS对象原型</h1><p>原型是 JS 中对象相互继承特性的机制，这里将解释什么是原型，以及原型链的工作原理、如何为一个对象设置原型，最后，会分析基于原型的继承机制。</p>
+<h2 id="1-原型与原型链"><a href="#1-原型与原型链" class="headerlink" title="1. 原型与原型链"></a>1. 原型与原型链</h2><p>这里创建一个对象：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myObject = &#123;</span><br><span class="line">  <span class="attr">city</span>: <span class="string">&quot;bj&quot;</span>,</span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`来自 <span class="subst">$&#123;<span class="variable language_">this</span>.city&#125;</span> 的问候`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">myObject.<span class="title function_">greet</span>(); <span class="comment">// 来自 bj 的问候</span></span><br></pre></td></tr></table></figure></div>
+
+<p>它具有数据属性 <code>city</code> 和方法 <code>greet()</code>。</p>
+<p>当在控制台中输入 <code>myObject.</code> 时，可以看到该对象下可用的一系列属性：<br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/37d134d290564cb19367ce739cf901ee.png#pic_center"
+                     data-src="https://img-blog.csdnimg.cn/ffc02133d53749c49a2dc32dbcd3033a.png#pic_center"
                       alt="在这里插入图片描述"
                 ></p>
-<p>由于这个属性是可写的，其可以被设置为任何整数值，但在赋值时有以下注意点：</p>
+<p>但这些方法中，很多都不是我们定义的，现在尝试访问其中一个：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myObject.<span class="title function_">toString</span>(); <span class="comment">// &quot;输出[object Object]&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>发现其可以成功调用，那么这些额外的属性，是从哪里来的？</p>
+<p>在 JS 中，所有对象均有一个内置属性，其被称为它的 <code>prototype</code> (原型)。它本身是一个对象，因此，原型对象也会有其自己的原型。</p>
+<p>每当定义一个对象（函数也是对象）时，就会生成一个 <code>__proto__</code> 属性，被称为<strong>隐式原型</strong>；这个 <code>__proto__</code> 属性指向的是这个对象的<strong>构造函数的 prototype属性</strong>，其被称为<strong>显式原型</strong>。</p>
+<p>当访问一个对象的属性或方法时，首先对象会从自身去找，如果找不到，就会往原型中去找，即 <code>__proto__</code>，也就是<strong>它构造函数的 prototype 中</strong>。如果原型中找不到(即构造函数中也没有该属性)，因为构造函数也是对象，也有 <code>__proto__</code>，就会往<strong>原型的原型</strong>上去找…这样就形成了链式的结构，称为<strong>原型链</strong>，本质描述的是<strong>对象的一种继承关系</strong>！</p>
+<p>因此在上面的代码中，浏览器做了以下工作：</p>
 <ul>
-<li>如果一个元素不能被滚动，那么赋值后，<code>scrollTop</code> 属性仍将被设置为0</li>
-<li>设置<code>scrollTop</code>的值小于0，则赋值后，<code>scrollTop</code> 被设为0</li>
-<li>如果设置了超出这个容器可滚动的值, <code>scrollTop</code> 会被设为最大值.</li>
+<li>在 <code>myObject</code> 中寻找 <code>toString</code> 属性</li>
+<li><code>myObject</code> 中找不到 <code>toString</code> 属性，故在 <code>myObject</code> 的原型对象中寻找 <code>toString</code></li>
+<li>其原型对象拥有这个属性，然后调用它。</li>
 </ul>
-<p>同时，由于该属性可写的特性，我们经常会使用该属性来实现回到顶部的效果：<code>element.scrollTop = 0</code></p>
-<h3 id="1-2-scrollHeight"><a href="#1-2-scrollHeight" class="headerlink" title="1.2 scrollHeight"></a>1.2 scrollHeight</h3><p><code>Element.scrollHeight</code> 这个<strong>只读</strong>属性是一个元素<strong>内容高度的度量</strong>，包括由于溢出导致的视图中不可见内容。</p>
-<p><code>scrollHeight</code> 的值等于<strong>该元素在不使用滚动条的情况下为了适应视口中所有内容所需的最小高度</strong>，即元素内容的真实高度。</p>
-<p>没有垂直滚动条的情况下，<code>scrollHeight</code>值与元素视图填充所有内容所需要的最小值<code>clientHeight</code>相同。</p>
-<p><code>scrollHeight</code> 包括元素的<code>padding</code>，但不包括元素的<code>border</code>和<code>margin</code>。另外，<code>scrollHeight</code>也包括 <code>::before</code> 和 <code>::after</code>这样的伪元素。</p>
-<p>如下图：</p>
+<p>那么 <code>myObject</code> 的原型是什么？可以使用 <code>Object.getPrototypeOf()</code> 函数来查询：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/fb72858c789d4d62abf04b5ac49cdc35.png#pic_center"
+                     data-src="https://img-blog.csdnimg.cn/78112a8ad37c4c4192fc731cbfc1a320.png#pic_center"
                       alt="在这里插入图片描述"
                 ></p>
-<p>根据该属性的定义，我们常常利用该属性与 <code>scrollTop</code>、<code>clientHeight</code> 之间的关系来判断元素是否滚动到底部：<code>element.scrollHeight - element.scrollTop === element.clientHeight</code></p>
-<h2 id="2-clientTop-与-clientHeight"><a href="#2-clientTop-与-clientHeight" class="headerlink" title="2. clientTop 与 clientHeight"></a>2. clientTop 与 clientHeight</h2><h3 id="2-1-clientTop"><a href="#2-1-clientTop" class="headerlink" title="2.1 clientTop"></a>2.1 clientTop</h3><p>clientTop 同样是一个只读属性，其表示一个元素顶部边框的宽度，这个宽度并不包括顶部外边距或内边距。</p>
-<h3 id="2-2-clientHeight"><a href="#2-2-clientHeight" class="headerlink" title="2.2 clientHeight"></a>2.2 clientHeight</h3><p>这个属性同样是是只读属性，对于没有定义CSS高度或者内部元素的元素，该属性值为0。</p>
-<p>若定义了高度或内部的元素，则它是<strong>元素内部的高度</strong>(单位像素)，包含<strong>内边距</strong>，但不包括<strong>水平滚动条、边框和外边距</strong>。</p>
-<p>实际上，<code>clientHeight</code> 就是<code>height +  padding - 滚动条</code>的值，即<strong>元素内容在视口中展示的高度</strong></p>
-<p>如下图：</p>
+<p>可以看到是一个对象，实际上，这个对象叫 <strong><code>Object.prototype</code><strong>，它是</strong>最基础的原型</strong>，<strong>所有对象默认都拥有它</strong>。<code>Object.prototype</code> 的 <code>__proto__</code> 性是 <code>null</code>，即，它位于原型链的<strong>终点</strong>：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/d48224fea8774b82bdfdc020aea349fd.png#pic_center"
+                     data-src="https://img-blog.csdnimg.cn/2b10388087f042439dcb1f4418ebd0e1.png#pic_center"
                       alt="在这里插入图片描述"
-                ></p>
-<h2 id="3-offsetTop-与-offsetHeight"><a href="#3-offsetTop-与-offsetHeight" class="headerlink" title="3. offsetTop 与 offsetHeight"></a>3. offsetTop 与 offsetHeight</h2><h3 id="3-1-offsetTop"><a href="#3-1-offsetTop" class="headerlink" title="3.1 offsetTop"></a>3.1 offsetTop</h3><p>要了解 <code>offsetTop</code> 属性，首先需要了解 <code>Element.offsetParent</code> 属性。</p>
-<p> <code>Element.offsetParent</code> 属性指向<strong>最近的包含该元素的定位元素</strong>。如果找不到，则指向最近的 tabel 或 table cell 元素，或者是<strong>根元素</strong>（标准模式下为<code>html</code>；quirks 模式下为<code>body</code>）。另外，当元素的 <code>display</code> 属性设置为 <code>none</code> 时，<code>offsetParent</code> 属性指向 <code>null</code>。</p>
-<p>而 <code>offsetTop</code> 属性，其表示了当前元素相对于其 <code>offsetParent</code> 元素的<strong>顶部内边距</strong>的距离。</p>
-<h3 id="3-2-offsetHeight"><a href="#3-2-offsetHeight" class="headerlink" title="3.2 offsetHeight"></a>3.2 offsetHeight</h3><p><code>HTMLElement.offsetHeight</code> 同样是一个只读属性，它返回该元素的<strong>像素高度</strong>，高度包含该元素的<strong>垂直内边距和边框</strong>，且是一个整数。</p>
-<p>通常，元素的<code>offsetHeight</code>是一种元素CSS高度的衡量标准，包括元素的边框、内边距和元素的水平滚动条（如果存在且渲染的话），但不包含<code>:before</code>或<code>:after</code>等伪类元素的高度。或者说，<code>offsetHeight</code> 是<strong>元素内容、元素边框以及滚动条在视口中展示的高度</strong>。</p>
-<p>如下图：</p>
+                ><br>但需要注意的是，一个对象的原型并不总是 <code>Object.prototype</code>，比如：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myDate = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">let</span> object = myDate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  object = <span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(object);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(object);</span><br><span class="line">&#125; <span class="keyword">while</span> (object);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出为：</span></span><br><span class="line"><span class="comment">// Date.prototype</span></span><br><span class="line"><span class="comment">// Object &#123; &#125;</span></span><br><span class="line"><span class="comment">// null</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，创建了一个 <code>Date</code> 对象，然后遍历了它的原型链并输出了原型链上的原型。其原型链如下：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/1af02d4ffd944ffaa96a8da9563ddc2c.png#pic_center"
+                     data-src="https://img-blog.csdnimg.cn/261afb5dd2f54dd3bc96ae776b7c951e.png#pic_center"
                       alt="在这里插入图片描述"
                 ></p>
-<p>另外，需要注意的是，当一个元素被隐藏时，该属性返回0。</p>
+<p>可以看到，如果调用 Date 类型常用的方法，如：<code>myDate.getMonth()</code>。实际上调用的是 <code>Date.prototype</code> 上的方法。</p>
+<p>实际上，如果我们顺着上面 <code>myObject</code> 的例子继续看下去，我们会看到更有意思的情况：</p>
+<p>首先我们明确一点，<code>__proto__</code> 属性为空的原型就是 <code>Object.prototype</code>，即最基础的原型。</p>
+<p>当我们定义一个函数时，可以看到这个函数的原型：</p>
+<p><img src="https://img-blog.csdnimg.cn/direct/90c714a3efaa41ad9f5a095fc1ae67a3.png" alt="![在这里插入图片描述](https://img-blog.csdnimg.cn/direct/a6cca540f41842c499a6fe63bbeb24f3.png"></p>
+<p>即 <code>f ()</code></p>
+<p>而看下面这张图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/direct/f7c4f67ba9884b54ad0bfbda8ac176c0.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>由前面的内容，我们知道，<code>myObject</code> 的 原型就是 <code>Object.prototype</code> ，而如果我们继续看下去，<code>Object.prototype</code> 同样有构造函数，而且这个构造函数是函数类型，进一步地，这个构造函数也有原型，其原型就是函数原型，而函数原型作为一个对象，其同样拥有 <code>__proto__</code> 属性，且它的 <code>__proto__</code> 属性指向的是 <code>Object.prototype</code>！</p>
+<p>也就是下面这张图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/direct/e94a2d4fca45468db67410c11092009a.png#pic_center"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>由此，还存在下面这几个比较有意思的等式：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Function</span>.<span class="property">__proto__</span>.<span class="property">__proto__</span> === <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span></span><br><span class="line"><span class="title class_">Function</span>.<span class="property">__proto__</span> === <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property">__proto__</span>.<span class="property">__proto__</span> === <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property">__proto__</span> === <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2-属性遮蔽"><a href="#2-属性遮蔽" class="headerlink" title="2. 属性遮蔽"></a>2. 属性遮蔽</h2><p>当我们在对象中定义了一个属性，而在该对象的原型中也存在一个同名的属性，会发生什么呢？</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myDate = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="number">1995</span>, <span class="number">11</span>, <span class="number">17</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myDate.<span class="title function_">getYear</span>()); <span class="comment">// 95</span></span><br><span class="line"></span><br><span class="line">myDate.<span class="property">getYear</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;别的东西！&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">myDate.<span class="title function_">getYear</span>(); <span class="comment">// &#x27;别的东西！&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>基于上面对原型链的描述，这应该是可以预测的。当我们调用 <code>getYear()</code> 时，浏览器首先在 <code>myDate</code> 中寻找具有该名称的属性，如果 <code>myDate</code> 没有定义该属性，才检查原型。因此，当我们给 <code>myDate</code> 添加 <code>getYear()</code> 后，就会调用 <code>myDate</code> 中的版本。</p>
+<p>这就叫做<strong>属性的遮蔽</strong>。</p>
+<h2 id="3-如何设置原型"><a href="#3-如何设置原型" class="headerlink" title="3. 如何设置原型"></a>3. 如何设置原型</h2><p>在 JS 中，有多种设置对象原型的方法，这里主要介绍两种：</p>
+<ol>
+<li><code>Object.create()</code></li>
+<li>构造函数</li>
+</ol>
+<h3 id="3-1-使用Object-create"><a href="#3-1-使用Object-create" class="headerlink" title="3.1 使用Object.create"></a>3.1 使用Object.create</h3><p>例：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> personPrototype = &#123;</span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello!&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> carl = <span class="title class_">Object</span>.<span class="title function_">create</span>(personPrototype);</span><br><span class="line">carl.<span class="title function_">greet</span>(); <span class="comment">// hello!</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，创建了一个 <code>personPrototype</code> 对象，它有一个 <code>greet()</code> 方法。然后我们使用 <code>Object.create()</code> 来创建一个<strong>以 <code>personPrototype</code> 为原型的新对象</strong>。</p>
+<p>现在我们可以在新对象上调用 <code>greet()</code>，而<strong>原型提供了这个方法的实现</strong>。(继承机制的体现！)</p>
+<h3 id="3-2-使用构造函数"><a href="#3-2-使用构造函数" class="headerlink" title="3.2 使用构造函数"></a>3.2 使用构造函数</h3><p>在 JavaScript 中，所有的函数都有一个名为 <code>prototype</code> 的属性。<strong>当你调用一个函数作为构造函数时，这个属性被设置为新构造对象的原型</strong>，即该对象的<strong>显式原型</strong>。（按照惯例，该对象的 <code>__proto__</code> 的属性会指向这个属性！）。</p>
+<p>因此，如果我们设置了一个构造函数的 <code>prototype</code>，我们可以确保所有用该构造函数创建的对象都被赋予该原型：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> personPrototype = &#123;</span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`你好，我的名字是 <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>！`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">assign</span>(<span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>, personPrototype);</span><br><span class="line"><span class="comment">// 将Person函数的prototype属性赋为我们创建的对象或</span></span><br><span class="line"><span class="comment">// Person.prototype.greet = personPrototype.greet;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到这里：</p>
+<ul>
+<li>创建了一个 <code>personPrototype</code> 对象，其中实现了输出名字的 <code>greet()</code> 方法</li>
+<li>创建了一个 <code>Person()</code> 构造函数，其中初始化了要创建人物对象的名字</li>
+</ul>
+<p>在这段代码之后，使用 <code>Person()</code> 创建的对象将获得 <code>personPrototype</code> 作为其原型，其中自动包含 <code>greet</code> 方法。如下：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reuben = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Reuben&quot;</span>);</span><br><span class="line">reuben.<span class="title function_">greet</span>(); <span class="comment">// 你好，我的名字是 Reuben！即调用了其构造函数原型上的方法！</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这也解释了为什么我们之前说 <code>myDate</code> 的原型被称为 <code>Date.prototype</code>，因为它是 <code>Date</code> 构造函数的 <code>prototype</code> 属性。</p>
+<h2 id="4-自有属性"><a href="#4-自有属性" class="headerlink" title="4. 自有属性"></a>4. 自有属性</h2><p>在上面的例子中，使用 <code>Person</code> 构造函数创建的对象有两个属性：</p>
+<ul>
+<li><code>name</code> 属性，在构造函数中设置，在 <code>Person</code> 对象中可以直接看到</li>
+<li><code>greet()</code> 方法，在原型即 <code>Person.prototype</code> 中实现</li>
+</ul>
+<p>这是一种非常常见的模式，即：<strong>方法是在原型上定义的，但数据属性是在构造函数中定义的。</strong></p>
+<p>这是因为方法通常对我们创建的每个对象都是一样的，而我们通常希望每个对象的数据属性都有自己的值（就像这里每个人都有不同的名字）。</p>
+<p>而这些这就在对象中定义的属性，例如这里的 <code>name</code>，被称为<strong>自有属性</strong>，在 JS 中，我们可以用静态方法 <code>Object.hasOwn()</code> 来检查某一个属性是否是自有属性。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> irma = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Irma&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">hasOwn</span>(irma, <span class="string">&quot;name&quot;</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">hasOwn</span>(irma, <span class="string">&quot;greet&quot;</span>)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+
+<p>实际上，非静态方法 <code>Object.hasOwnProperty()</code> 也可以判断。但还是推荐使用静态方法 <code>Object.hasOwn()</code>。</p>
+<h2 id="5-原型与继承"><a href="#5-原型与继承" class="headerlink" title="5. 原型与继承"></a>5. 原型与继承</h2><p>原型是 JavaScript 的一个强大且非常灵活的功能，使得<strong>重用代码</strong>和<strong>组合对象</strong>成为可能。</p>
+<p>特别是它们支持某种意义的<strong>继承</strong>。继承是面向对象的编程语言的一个特点，它让程序员表达这样的想法：系统中的一些对象是其他对象的更专门的版本。</p>
+<p>例如，如果我们正在为一所学校建模，我们可能有<em>教授</em> 和<em>学生</em> ：他们都是<em>人</em>，所以有一些共同的特征（例如，他们都有名字），但每个人都可能增加额外的特征（例如，教授有一个他们所教的科目），或者可能以不同的方式实现同一个特征。在一个 OOP 系统中，我们可以说教授和学生都<strong>继承自</strong>人。</p>
+<p>你可以看到在 JavaScript 中，如果 <code>Professor</code> 和 <code>Student</code> 对象具有原型 <code>Person</code>，那么他们可以继承共同的属性，同时增加和重新定义那些需要不同的属性。</p>
+<p>首先整理一下相关概念：</p>
+<ul>
+<li><strong>构造函数</strong>：在 JavaScript 中，<strong>构造函数可以实现类的定义</strong>，帮助我们在一个地方描述类的“形状”，包括定义类的方法。不过，原型也可以用于实现类的定义。例如，如果一个方法定义于构造函数的 <code>prototype</code> 属性中，那么所有由该构造函数创造出来的对象都可以通过原型使用该方法，而我们也不再需要将它定义在构造函数中。</li>
+<li><strong>原型链</strong>：原型链很自然地实现了继承特性。例如，如果我们由 <code>Person</code> 原型构造了一个 <code>Student</code> 类，那么我们可以继承 <code>Person</code> 类的 <code>name</code> 属性，重写 <code>introduceSelf()</code> 方法。</li>
+</ul>
+<p>而实际上，JS 中的继承特性与基于类的面向对象编程之间有所不同，下面就来探讨一下二者的区别。</p>
+<p>首先，<strong>在基于类的面向对象编程中，类与对象是两个不同的概念</strong>，对象通常是由类创造出来的实例。由此，定义类的方式（定义类的语法）和实例化对象的方式（构造函数）也是不同的。而在 JavaScript 中，我们经常会使用函数或对象字面量创建对象，也就是说，<strong>JavaScript 可以在没有特定的类定义的情况下创建对象</strong>。相对于基于类的面向对象编程来说，这种方式更为<strong>轻量</strong>，帮助我们更为方便地使用对象。</p>
+<p>其次，尽管原型链看起来很像是继承的层级结构，并且在某些方面，原型链的行为与继承的行为也很类似，但是在其他方面，二者之间仍然存在区别。在继承方式下，当一个子类完成继承时，由该子类所创建的对象既具有其子类中单独定义的属性，又具有其父类中定义的属性（以及父类的父类，依此类推）。而<strong>在原型链中，每一个层级都代表了一个不同的对象</strong>，不同的对象之间通过 <code>__proto__</code> 属性链接起来。原型链的行为并不太像是继承，而更像是<strong>委派</strong>（delegation）。委派同样是对象中的一种编程模式。当我们要求对象执行某项任务时，在委派模式下，对象可以自己执行该项任务，或者要求另一个对象（委派的对象）以其自己的方式执行这项任务。在许多方面，相对于继承来说，委派可以更为灵活地在许多对象之间建立联系（例如，委派模式可以在程序运行时改变、甚至完全替换委派对象）。</p>
+<p>尽管如此，构造函数和原型仍然可以在 JavaScript 中实现基于类的面向对象编程特性。但是直接使用构造函数和原型去实现这些特性（例如继承）仍是棘手的，因此，JavaScript 提供了一些额外的特性，这些特性在原型这一模型之上又抽象出一层模型，将基于类的面向对象编程中的概念映射到原型中，从而能够更为直接地在 JavaScript 中使用基于类的面向对象编程中的概念。实际上，就是 <strong>ES6 中新增的 class 语法糖</strong>！</p>
+<p>那么，JS 中有哪些实现继承的方法呢？</p>
+<h2 id="6-JS中实现继承的方法"><a href="#6-JS中实现继承的方法" class="headerlink" title="6. JS中实现继承的方法"></a>6. JS中实现继承的方法</h2><ol>
+<li><strong>构造函数继承</strong>：在⼦对象的构造函数中，通过 <code>call</code> 或者 <code>apply</code> 调⽤<strong>⽗对象的构造函数</strong>来继承⽗对象的属性</li>
+<li><strong>原型继承</strong>：即把⼦对象的<strong>原型 <code>prototype</code></strong> 设置为⽗对象的一个实例</li>
+<li><strong>组合继承</strong>：组合继承实际上是上面两种方法的结合，⼀般我们会<strong>通过构造函数来继承属性</strong>，<strong>通过原型来继承⽅法</strong>。</li>
+<li>最后就是<strong>ES6新增了class，可以通过extends来实现继承</strong>，但本质上仍然是构造函数和原型的继承。</li>
+</ol>
+<h2 id="7-实例"><a href="#7-实例" class="headerlink" title="7. 实例"></a>7. 实例</h2><p>…</p>
 
         </div>
 
@@ -721,18 +812,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</li>
+        <li><strong>标题:</strong> js-原型与原型链</li>
         <li><strong>作者:</strong> 6dianbiqi</li>
         <li><strong>创建于
-                :</strong> 2024-07-02 18:38:59</li>
+                :</strong> 2024-07-02 18:49:04</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-07-02 18:39:56
+                    :</strong> 2024-07-02 18:49:33
             </li>
         
         <li>
-            <strong>链接:</strong> https://github.com/xz719/2024/07/02/js-scrollTop-scrollHeight-clientTop-clientHeight-offsetTop-offsetHeight/
+            <strong>链接:</strong> https://github.com/xz719/2024/07/02/js-原型与原型链/
         </li>
         <li>
             <strong>
@@ -757,6 +848,14 @@
                         <a href="/tags/js-%E5%9F%BA%E7%A1%80/">#js 基础</a>&nbsp;
                     </li>
                 
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/js-%E5%8E%9F%E5%9E%8B/">#js 原型</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/js-%E5%8E%9F%E5%9E%8B%E9%93%BE/">#js 原型链</a>&nbsp;
+                    </li>
+                
             </ul>
         
 
@@ -765,29 +864,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/07/02/js-%E5%87%BD%E6%95%B0%E3%80%81%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">js-函数、变量声明提升</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/06/12/js-DOM-%E5%92%8C-BOM/"
+                        href="/2024/07/02/js-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A0%88/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">js DOM 和 BOM</span>
+                                <span class="post-nav-title-item">js-执行上下文与执行栈</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -850,8 +934,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">js-scrollTop+scrollHeight+clientTop+clientHeight+offsetTop+offsetHeight</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#scrollTop%E3%80%81scrollHeight%E3%80%81clientTop%E3%80%81clientHeight%E3%80%81offsetTop%E4%BB%A5%E5%8F%8AoffsetHeight"><span class="nav-text">scrollTop、scrollHeight、clientTop、clientHeight、offsetTop以及offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-scrollTop-%E4%B8%8E-scrollHeight"><span class="nav-text">1. scrollTop 与 scrollHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-scrollTop"><span class="nav-text">1.1 scrollTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-scrollHeight"><span class="nav-text">1.2 scrollHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-clientTop-%E4%B8%8E-clientHeight"><span class="nav-text">2. clientTop 与 clientHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-clientTop"><span class="nav-text">2.1 clientTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-clientHeight"><span class="nav-text">2.2 clientHeight</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-offsetTop-%E4%B8%8E-offsetHeight"><span class="nav-text">3. offsetTop 与 offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-offsetTop"><span class="nav-text">3.1 offsetTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-offsetHeight"><span class="nav-text">3.2 offsetHeight</span></a></li></ol></li></ol></li></ol>
+        <div class="page-title">js-原型与原型链</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%9E%8B"><span class="nav-text">JS对象原型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="nav-text">1. 原型与原型链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B1%9E%E6%80%A7%E9%81%AE%E8%94%BD"><span class="nav-text">2. 属性遮蔽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%8E%9F%E5%9E%8B"><span class="nav-text">3. 如何设置原型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E4%BD%BF%E7%94%A8Object-create"><span class="nav-text">3.1 使用Object.create</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-text">3.2 使用构造函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%87%AA%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="nav-text">4. 自有属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="nav-text">5. 原型与继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-JS%E4%B8%AD%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">6. JS中实现继承的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%AE%9E%E4%BE%8B"><span class="nav-text">7. 实例</span></a></li></ol></li></ol>
 
     </div>
 </div>
