@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="6dianbiqi">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2025/02/16/动态规划的常见模型/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="动态规划的常见模型所谓【模型】，就是将一类问题抽象成一个解题套路，然后根据这个套路来解题。 1️⃣ 0-1 背包问题0-1 背包问题是一个基本问题，基于这个基本问题，可以衍生出千姿百态的变种问题，这种题目就非常适合拿来构造解题模型。 1.1 问题描述123有 n 件物品，物品体积用一个名为 w 的数组存起来，物品的价值用一个名为 value 的数组存起来；每件物品的体积用 w[i] 来表示，每件物">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划的常见模型">
+<meta property="og:url" content="http://example.com/2025/02/16/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="6dianbiqi&#39;s blog">
+<meta property="og:description" content="动态规划的常见模型所谓【模型】，就是将一类问题抽象成一个解题套路，然后根据这个套路来解题。 1️⃣ 0-1 背包问题0-1 背包问题是一个基本问题，基于这个基本问题，可以衍生出千姿百态的变种问题，这种题目就非常适合拿来构造解题模型。 1.1 问题描述123有 n 件物品，物品体积用一个名为 w 的数组存起来，物品的价值用一个名为 value 的数组存起来；每件物品的体积用 w[i] 来表示，每件物">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/20/pAWYAiT.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/20/pAWYAiT.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/20/pAWYYSe.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/20/pAWYhT0.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/20/pAWY5kV.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/20/pAWYofU.png">
+<meta property="og:image" content="https://img.z4a.net/images/2025/02/14/image.png">
+<meta property="og:image" content="https://img.z4a.net/images/2025/02/14/imageaae22355ba287fe2.png">
+<meta property="article:published_time" content="2025-02-16T04:25:17.000Z">
+<meta property="article:modified_time" content="2025-02-16T05:41:24.164Z">
+<meta property="article:author" content="6dianbiqi">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s21.ax1x.com/2024/11/20/pAWYAiT.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/clock.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/clock.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/clock.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            动态规划的常见模型 -
+        
+        6dianbiqi&#39;s blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        6dianbiqi&#39;s blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"6dianbiqi","subtitle":{"text":[],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/xz719"}},"Doc":{"icon":"fa-regular fa-book","path":"https://gitee.com/xz20010719/doc"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/5/15 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                6dianbiqi&#39;s blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/xz719">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   target="_blank" rel="noopener" href="https://gitee.com/xz20010719/doc"
+                                        >
+                                    <i class="fa-regular fa-book fa-fw"></i>
+                                    DOC
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/xz719">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           target="_blank" rel="noopener" href="https://gitee.com/xz20010719/doc"
+                        >
+                            <span>
+                                DOC
+                            </span>
+                            
+                                <i class="fa-regular fa-book fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">动态规划的常见模型</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/cat.svg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">6dianbiqi</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-02-16 12:25:17</span>
+        <span class="mobile">2025-02-16 12:25:17</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-02-16 13:41:24</span>
+            <span class="mobile">2025-02-16 13:41:24</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0/">算法理论学习</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="动态规划的常见模型"><a href="#动态规划的常见模型" class="headerlink" title="动态规划的常见模型"></a>动态规划的常见模型</h1><p>所谓【模型】，就是将一类问题抽象成一个解题套路，然后根据这个套路来解题。</p>
+<h2 id="1️⃣-0-1-背包问题"><a href="#1️⃣-0-1-背包问题" class="headerlink" title="1️⃣ 0-1 背包问题"></a>1️⃣ 0-1 背包问题</h2><p>0-1 背包问题是一个基本问题，基于这个基本问题，可以衍生出千姿百态的变种问题，这种题目就非常适合拿来构造解题模型。</p>
+<h3 id="1-1-问题描述"><a href="#1-1-问题描述" class="headerlink" title="1.1 问题描述"></a>1.1 问题描述</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">有 n 件物品，物品体积用一个名为 w 的数组存起来，物品的价值用一个名为 value 的数组存起来；每件物品的体积用 w[i] 来表示，每件物品的价值用 value[i] 来表示。现在有一个容量为 c 的背包，问你如何选取物品放入背包，才能使得背包内的物品总价值最大？</span><br><span class="line"></span><br><span class="line">注意：每种物品都只有 <span class="number">1</span> 件</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-2-问题分析"><a href="#1-2-问题分析" class="headerlink" title="1.2 问题分析"></a>1.2 问题分析</h3><p>我们遵循动态规划的解题思路，第一步，找到问题的某一状态，思考前进或后退的可能性。</p>
+<p>如何定义这一状态？我们在动态规划的学习、解题过程中，总结出了一个小技巧：</p>
+<blockquote>
+<p>动态规划问题也是有套路的：单个数组或者字符串要用动态规划时，可以把动态规划 <code>dp[i]</code> 定义为 <code>nums[0:i]</code> 中想要求的结果；当两个数组或者字符串要用动态规划时，可以把动态规划定义成两维的 <code>dp[i][j]</code> ，其含义是在 <code>A[0:i]</code> 与 <code>B[0:j]</code> 之间匹配得到的想要的结果。</p>
+</blockquote>
+<p>这本质上是利用了动态规划的【最优子结构】特性，即：</p>
+<blockquote>
+<p>一个问题的最优解可以由其子问题的最优解推导而来。</p>
+</blockquote>
+<p>那么具体到 0-1 背包问题，问题是【考虑 1 ~ <code>n</code> 件物品，背包容量为 <code>c</code>，找出其价值最大的组合】。我们<strong>对前 <code>i</code> 个物品进行讨论</strong>，这不就是子问题吗？进一步地，我们定义子问题的最优解为 <code>f(i, c)</code>，注意这里的 <code>i</code> 是指对于前 <code>i</code> 个物品！</p>
+<p>那么我们对编号为 <code>i</code> 的物品进行如下讨论：</p>
+<ol>
+<li><p>其不存在于最优解中：</p>
+<p>那么，我们完全可以<strong>将 <code>i</code> 排除出问题之外，不会有任何影响</strong>。此时问题就转化为了【考虑 1 ~ <code>i - 1</code> 件物品，背包容量为 <code>c</code>，找出其价值最大的组合】，其最优解显然为 <code>f(i - 1, c)</code>;</p>
+<p>而由于将 <code>i</code> 排除后不会有任何影响，所以：<code>f(i, c) === f(i - 1, c)</code></p>
+</li>
+<li><p>其存在于最优解中：</p>
+<p>那么，如果我们将 <code>i</code> 从背包中拿出，会对背包的重量、价值均产生影响。此时问题转化为【考虑 1 ~ <code>i - 1</code> 件物品，背包容量为 <code>c - w[i]</code>，找出其价值最大的组合】，其最优解为 <code>f(i - 1, c-w[i])</code>；</p>
+<p>由于还会对价值产生影响，所以我们可以得出：<code>f(i, c) - value[i] === f(i - 1, c - w[i])</code></p>
+</li>
+</ol>
+<p>这两种可能都需要考虑，而我们需要找最大，所以找这两者中的最大值即可：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">f</span>(i, c) = <span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="title function_">f</span>(i - <span class="number">1</span>, c), <span class="title function_">f</span>(i - <span class="number">1</span>, c - w[i]) + value[i])</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到这里的子问题彼此之间是相互联系的，这就是动态规划的特性，它的子问题之间并不是独立的！</p>
+<p>同时，这也是我们的状态转移方程。</p>
+<p>接下来，第二步，确定迭代的方向和范围。</p>
+<p>观察状态转移方程，自变量有两个：</p>
+<ol>
+<li><code>i</code>，即当前讨论物品中的最后一个物品编号（前 i 个物品！！！）</li>
+<li>当前背包容量，由于 <code>c</code> 是题目中明确指明的输入，所以这里用 <code>v</code> 来作为自变量标识符。</li>
+</ol>
+<p>自变量明确了，接下来要确定范围：</p>
+<ul>
+<li><p>对于 <code>i</code>，很明显，是从 1 迭代至 <code>n</code>；</p>
+</li>
+<li><p>对于当前背包容量，我们应该取一个什么范围呢？</p>
+<p>首先可以确定对于任意 <code>i</code>，背包容量不能是一个固定的值，其必须是变化的。</p>
+<p>其次，当我们讨论前 <code>i</code> 个物品时，背包容量至少要能够容纳下当前的物品 <code>i</code>，否则我们就没有讨论的必要了，因为其根本不可能在最优解中，而背包最大也不应该超过我们被给予的常量 <code>c</code>，所以背包容量应该是一个范围 <code>[w[i], c]</code>。</p>
+</li>
+</ul>
+<p>现在我们找到了迭代的方向和范围，如何将状态转移方程塞入迭代过程呢？这就是我们第三步要做的事了，找出基础状态，作为迭代的起点。</p>
+<p>既然 <code>f(i, v)</code> 表示了考虑前 <code>i</code> 个物品，背包容量最大为 <code>v</code> 时的最大价值，那么当：</p>
+<ol>
+<li><code>i === 0</code> 时，显然，无论背包容量为多少，最大价值均为 0，因为还没有物品；</li>
+<li><code>v === 0</code> 时，显然，无论有多少个物品，最大价值均为 0，因为背包容量为 0；</li>
+</ol>
+<p>所以，我们就可以将这两者作为基础状态，初始化 dp 数组，然后进行迭代。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里 i 是物品数量，v 是背包容量，之所以背包容量是 v + 1，是因为要考虑背包容量为 0 的情况</span></span><br><span class="line"><span class="keyword">const</span> dp = <span class="keyword">new</span> <span class="title class_">Array</span>(i).<span class="title function_">fill</span>(<span class="number">0</span>).<span class="title function_">map</span>(<span class="function">() =&gt;</span> <span class="keyword">new</span> <span class="title class_">Array</span>(v + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>));</span><br></pre></td></tr></table></figure></div>
+
+<p>接下来，第四步，将状态转移方程塞入迭代过程，进行迭代。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; n;i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> v = w[i];v &lt;= c; v++) &#123;</span><br><span class="line">        dp[i][v] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[i - <span class="number">1</span>][v], dp[i -<span class="number">1</span>][c - w[i]] + value[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里我们可以看到，当讨论不同背包容量的问题时，我们的背包容量是以 1 为单位逐渐增加的！</p>
+<h3 id="1-3-空间优化-滚动数组"><a href="#1-3-空间优化-滚动数组" class="headerlink" title="1.3 空间优化 - 滚动数组"></a>1.3 空间优化 - 滚动数组</h3><p>现在，时间复杂度已经被我们优化到了 <code>O(n)</code> 的水平，相当不错。但是空间复杂度其实还可以再优化一下。不过不着急，初学背包问题，我们先站在巩固思路的角度，重现一下这个二维数组的填充过程：</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pAWYAiT"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/20/pAWYAiT.png"
+                      alt="pAWYAiT.png"
+                ></a></p>
+<p>从图中我们可以看出，计算 <code>dp[i][v]</code> 的时候，其实只需要图中标红位置的数据就可以了（这与前面讲解过的最优子结构特性不谋而合），也就是说未标红的地方对于 <code>dp[i][v]</code> 的计算来说都属于冗余数据。</p>
+<p>实际上，对于第 i 行的计算来说，只有第 i-1 行的数据是有意义的，更早的数据它都不关心。也就是说我们其实根本不需要记录所有的数据，理论上只要保留当前行和上一行的数据就足够了。</p>
+<p>所以，这里我们可以利用【滚动数组】的技巧，仅仅使用一位数组。</p>
+<p>让我们重新看看状态转移方程和之前二维数组的填充过程</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">f</span>(i, c) = <span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="title function_">f</span>(i - <span class="number">1</span>, c), <span class="title function_">f</span>(i - <span class="number">1</span>, c - w[i]) + value[i])</span><br></pre></td></tr></table></figure></div>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pAWYAiT"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/20/pAWYAiT.png"
+                      alt="pAWYAiT.png"
+                ></a></p>
+<p>可以看到，当我们计算 <code>dp[i][v]</code> 时，我们需要的是 <code>dp[i-1][v-w[i]]</code> 和 <code>dp[i-1][v]</code>，而 <code>dp[i][v]</code> 和 <code>dp[i-1][v]</code> 在二维数组的同一列上，那么我们能不能只用一行数组？记录 i - 1 行的数据，然后再计算 i 行时，从后往前计算，计算出 <code>dp[i][v]</code> 后将 <code>dp[i-1][v]</code> 覆盖掉，这样也不会影响后续的计算，也省了空间。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pAWYYSe"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/20/pAWYYSe.png"
+                      alt="pAWYYSe.png"
+                ></a></p>
+<p>基于上面的分析，我们可以写出背包问题的完整求解代码：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 入参是物品的个数和背包的容量上限，以及物品的重量和价值数组</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">knapsack</span>(<span class="params">n, c, w, value</span>) &#123;</span><br><span class="line">  <span class="comment">// 保存计算结果的数组，这里数组长度为 c + 1 因为要考虑背包容量为 0 的情况</span></span><br><span class="line">  <span class="keyword">const</span> dp = <span class="keyword">new</span> <span class="title class_">Array</span>(c + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> res = -<span class="title class_">Infinity</span>; <span class="comment">// 结果</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> v = c; v &gt;= w[i]; v--) &#123;</span><br><span class="line">      dp[v] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[v], dp[v - w[i]] + value[i]);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 更新</span></span><br><span class="line">      <span class="keyword">if</span> (res &lt; dp[v]) &#123;</span><br><span class="line">        res = dp[v];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2️⃣-最长上升子序列问题"><a href="#2️⃣-最长上升子序列问题" class="headerlink" title="2️⃣ 最长上升子序列问题"></a>2️⃣ 最长上升子序列问题</h2><p>该模型对应的其实是动态规划中一类非常经典的问题 — 【序列型动态规划】。在形态各异的序列型动态规划问题中，“最长上升子序列”问题可以说是相当热门，其解法也是比较具有代表性的。接下来我们就以这个问题为抓手，提取其对应的的解题模型。</p>
+<h3 id="2-1-问题描述"><a href="#2-1-问题描述" class="headerlink" title="2.1 问题描述"></a>2.1 问题描述</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">题目描述：给定一个无序的整数数组，找到其中最长上升子序列的长度。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line">输入: [<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>]</span><br><span class="line">输出: <span class="number">4</span></span><br><span class="line">解释: 最长的上升子序列是 [<span class="number">2</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>]，它的长度是 <span class="number">4</span>。</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line">可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。你算法的时间复杂度应该为 O(n^<span class="number">2</span>) 。</span><br><span class="line"></span><br><span class="line">进阶: 能将算法的时间复杂度降低到 O(nlogn) 吗?</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-2-问题分析"><a href="#2-2-问题分析" class="headerlink" title="2.2 问题分析"></a>2.2 问题分析</h3><p>在做这道题之前，首先要知道题目到底在说啥，这里的关键字有两个：【子序列】和【上升】。</p>
+<p>【子序列】，它指的是在原有序列的基础上，删除0个或者多个数，其他数的顺序保持不变得到的结果。拿示例的这个序列来说：</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">10</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>,<span class="number">18</span>]    </span><br></pre></td></tr></table></figure></div>
+
+<p>随便拿掉 0 个数或多个数：比如说我去掉第一个数字 10，去掉最后一个数 18，但是不打乱这个序列的顺序，那么我得到的新的序列就是该序列的一个子序列：</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">9</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">101</span>]    </span><br></pre></td></tr></table></figure></div>
+
+<p>而所谓【上升】，即排在后面的元素总是要大于排在前面的元素。</p>
+<p>在之前的学习中，我们曾经了解过一种“通用解题思路”。通用解题思路的核心，是利用递归思想，以“倒推”为抓手，快速地明确状态与状态间的关系。当我们面对一道题目，无从下手的时候，这个思维工具往往能够帮到我们很大的忙。</p>
+<p>然而，事事无绝对，学习动态规划并不是掌握一个套路就可以的。对于最长上升子序列问题来说，通用解题思路所描述的这种“自顶向下”的思维方式，并不好用。</p>
+<p>事实上，做这道题，要把握住一个关键的特征，那就是【序列】。</p>
+<p>这道题比较直白，直接把【序列】二字写在了题干里，而实际解题中更多的题目并不会明确指出它是【序列】类型题目，但是通过对题干进行分析，你会发现它实际上仍然会涉及到<strong>对一个序列的遍历，并且序列中的每一个元素都能够对应到一个有利于求解出最终结果的状态值（子问题的最优解！）</strong>，这类题目也符合【序列】的特征。</p>
+<p>对于序列类题目，我们并没有一套固定的解题模型可以直接套，一般来说只能见招拆招，针对不同的题型分支套不同的解法（所以确实需要有一定程度的题量上的积累）。解法虽有不同，背后的思想却是一而贯之的，那就是<strong>关注序列中元素的索引</strong>，尝试寻找不同索引对应的元素之间的关系、并以索引为线索去构造一维或二维的状态数组。</p>
+<p>当然，动态规划类题目中，总还是有一些套路的：</p>
+<blockquote>
+<p>单个数组或者字符串要用动态规划时，可以把动态规划 <code>dp[i]</code> 定义为 <code>nums[0:i]</code> 中想要求的结果；当两个数组或者字符串要用动态规划时，可以把动态规划定义成两维的 <code>dp[i][j]</code> ，其含义是在 <code>A[0:i]</code> 与 <code>B[0:j]</code> 之间匹配得到的想要的结果。</p>
+</blockquote>
+<p>所以，具体到这道题上来，第一步，找到子问题，定义状态，思考前进或后退的可能性。</p>
+<p>我们定义 <code>dp[i]</code> 为考虑前 <code>i</code> 个元素，以第 <code>i</code> 个元素结尾的最长上升子序列的长度。接下来，尝试前进，若想基于 <code>dp[i - 1]</code> 求解出 <code>dp[i]</code>，我们需要关注到的是第 <code>i</code> 个元素和前 <code>i - 1</code> 个元素范围内的最长上升子序列的关系，它们之间的关系有两种可能：</p>
+<ol>
+<li>若第 <code>i</code> 个元素比前 <code>i - 1</code> 个元素中某一个元素要大，此时我们就可以在这个元素所在的上升子序列的末尾追加第 <code>i</code> 个元素（延长原有的子序列），得到一个新的上升子序列。</li>
+<li>若第 <code>i</code> 个元素并不比前 <code>i - 1</code> 个元素中所涵盖的最长上升子序列中的某一个元素大，则维持原状，子序列不延长。</li>
+</ol>
+<p>所以，我们的状态转移方程为：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对于第 i 个元素来说，它需要遍历它前面的所有元素，看看能不能延长它们的最长上升子序列</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[j] &lt; nums[i]) &#123;</span><br><span class="line">        dp[i] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[i], dp[j] + <span class="number">1</span>)  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>接下来，第二步，确定迭代的方向和范围。</p>
+<p>既然我们定义了 <code>dp[i]</code> 为考虑前 <code>i</code> 个元素，以第 <code>i</code> 个元素结尾的最长上升子序列的长度，由于第 1 个元素不需要讨论，<code>dp[1]</code> 必定为 1，那么我们的迭代方向自然就是从第 2 个元素开始，遍历到第 <code>n</code> 个元素结束。</p>
+<p>然后，第三步，确定基础状态。</p>
+<p>前面说过对于第 1 个元素来说，它本身就是一个长度为 1 的上升子序列，所以 <code>dp[1] = 1</code>。</p>
+<p>而对于其他索引位来说，它们都与一个长度为 1 的子序列有关 — 那就是只有它自己存在的子序列。因此每一个索引位对应的状态初始值都是 1。</p>
+<p>所以我们可以进行这样的初始化：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化数组里面每一个索引位的状态值</span></span><br><span class="line"><span class="keyword">const</span> dp = (<span class="keyword">new</span> <span class="title class_">Array</span>(nums.<span class="property">length</span>)).<span class="title function_">fill</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>最后，第四步，将状态转移方程塞入迭代过程，进行迭代。</p>
+<h3 id="2-3-图像分析"><a href="#2-3-图像分析" class="headerlink" title="2.3 图像分析"></a>2.3 图像分析</h3><p>上面的分析过程有些许抽象，下面我们以题目示例中的数组 <code>[10,9,2,5,3,7,101,18]</code> 为例，通过图像的方式，来详细分析一下整个状态转移的过程。</p>
+<p>在算法的初始态，我们还没有进行任何的遍历和计算，此时对于每一个索引位来说，它都只与一个长度为 1 的子序列有关 — 那就是只有它自己存在的子序列。因此每一个索引位对应的状态初始值都是 1：</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pAWYhT0"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/20/pAWYhT0.png"
+                      alt="pAWYhT0.png"
+                ></a></p>
+<p>同时对于索引位为 0 的元素来说，由于以它为结尾的子序列有且仅有 <code>[10]</code> 这一个，因此它的状态值时一开始就明确的，那就是 1：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0</span>] = <span class="number">1</span></span><br></pre></td></tr></table></figure></div>
+
+<p>下面基于 <code>dp[0]</code> 对 <code>dp[1]</code> 求解，比较两个索引位上元素的大小：</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pAWY5kV"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/20/pAWY5kV.png"
+                      alt="pAWY5kV.png"
+                ></a></p>
+<p>发现 9 比 10 小，没办法延长原有的子序列，因此啥也不干。继续往下遍历，遇到了 2，发现 2 比前两个数都小，仍然没法延长任何一个子序列，继续啥也不干。</p>
+<p>再往下遍历，遇到了 5，对比 5 和前面三个元素，发现它比 2 大，可以延长 2 所在的那个最长上升子序列，延长后，以 5 为结尾的最长上升子序列的长度就得到了更新：</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pAWYofU"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s21.ax1x.com/2024/11/20/pAWYofU.png"
+                      alt="pAWYofU.png"
+                ></a></p>
+<p>重复上面这个【遍历新元素 + 回头看】的逻辑，直到整个数组被完全遍历，我们就能拿到以每一个索引位元素为结尾的最长上升子序列的长度值。从这些长度值中筛选出最大值，我们也就得到了问题的解。</p>
+<h3 id="2-4-代码实现"><a href="#2-4-代码实现" class="headerlink" title="2.4 代码实现"></a>2.4 代码实现</h3><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 入参是一个数字序列</span></span><br><span class="line"><span class="keyword">const</span> lengthOfLIS = <span class="keyword">function</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">  <span class="comment">// 缓存序列的长度</span></span><br><span class="line">  <span class="keyword">const</span> len = nums.<span class="property">length</span>;</span><br><span class="line">  <span class="comment">// 处理边界条件</span></span><br><span class="line">  <span class="keyword">if</span>(!len) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 初始化数组里面每一个索引位的状态值</span></span><br><span class="line">  <span class="keyword">const</span> dp = (<span class="keyword">new</span> <span class="title class_">Array</span>(len)).<span class="title function_">fill</span>(<span class="number">1</span>);</span><br><span class="line">  <span class="comment">// 初始化最大上升子序列的长度为1</span></span><br><span class="line">  <span class="keyword">let</span> maxLen = <span class="number">1</span>;</span><br><span class="line">  <span class="comment">// 从第2个元素开始，遍历整个数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="comment">// 每遍历一个新元素，都要“回头看”，看看能不能延长原有的上升子序列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">      <span class="comment">// 若遇到了一个比当前元素小的值，则意味着遇到了一个可以延长的上升子序列，故更新当前元素索引位对应的状态</span></span><br><span class="line">      <span class="keyword">if</span> (nums[j] &lt; nums[i]) &#123;</span><br><span class="line">        dp[i] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[i], dp[j] + <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 及时更新上升子序列长度的最大值</span></span><br><span class="line">    <span class="keyword">if</span> (dp[i] &gt; maxLen) &#123;</span><br><span class="line">      maxLen = dp[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 遍历完毕，最后到手的就是最大上升子序列的长度</span></span><br><span class="line">  <span class="keyword">return</span> maxLen;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3️⃣-最长公共子序列模型"><a href="#3️⃣-最长公共子序列模型" class="headerlink" title="3️⃣ 最长公共子序列模型"></a>3️⃣ 最长公共子序列模型</h2><p>最长公共子序列问题属于经典的二维动态规划问题，我们的基本思路依然是先分析递归结构，然后【自底向上】递推。</p>
+<p>写在前面，从这个模型中，我们可以得到一条解决二维字符串动态规划问题的基本经验 — 比较两个字符串的差异可以<strong>根据它们最后一个字符串的差异进行穷举</strong>。</p>
+<h3 id="3-1-问题描述"><a href="#3-1-问题描述" class="headerlink" title="3.1 问题描述"></a>3.1 问题描述</h3><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定两个字符串 text1 和 text2，返回这两个字符串的最长 公共子序列 的长度。如果不存在 公共子序列 ，返回 <span class="number">0</span> 。</span><br><span class="line"></span><br><span class="line">一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。</span><br><span class="line"></span><br><span class="line">例如，&quot;ace&quot; 是 &quot;abcde&quot; 的子序列，但 &quot;aec&quot; 不是 &quot;abcde&quot; 的子序列。</span><br><span class="line">两个字符串的 公共子序列 是这两个字符串所共同拥有的子序列。</span><br><span class="line"></span><br><span class="line">示例 <span class="number">1</span>：</span><br><span class="line"></span><br><span class="line">输入：text1 = &quot;abcde&quot;, text2 = &quot;ace&quot; </span><br><span class="line">输出：<span class="number">3</span>  </span><br><span class="line">解释：最长公共子序列是 &quot;ace&quot; ，它的长度为 <span class="number">3</span> 。</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-2-问题分析"><a href="#3-2-问题分析" class="headerlink" title="3.2 问题分析"></a>3.2 问题分析</h3><p>第一步，找到子问题，定义状态，思考前进或后退的可能性。</p>
+<p>仍然牢记：</p>
+<blockquote>
+<p>单个数组或者字符串要用动态规划时，可以把动态规划 <code>dp[i]</code> 定义为 <code>nums[0:i]</code> 中想要求的结果；当两个数组或者字符串要用动态规划时，可以把动态规划定义成两维的 <code>dp[i][j]</code> ，其含义是在 <code>A[0:i]</code> 与 <code>B[0:j]</code> 之间匹配得到的想要的结果。</p>
+</blockquote>
+<p>那么我们就假设字符串 text1 和 text2 的长度分别为 m 和 n，<code>dp[i][j]</code> 表示 <code>text1[1:i]</code> 和 <code>text2[1:j]</code> 的最长公共子序列的长度（注意下标从 1 开始）。</p>
+<p>第二步，思考状态转移方程，根据 <code>text1[i]</code> 和 <code>text2[j]</code> 的情况，分为两种决策：</p>
+<ol>
+<li><p>若 <code>text1[i] == text2[j]</code>，也就是说两个字符串的最后一位<strong>相等</strong>，那么问题就转化成了字符串 text1 的 <code>[1,j-1]</code> 区间和字符串 text2 的 <code>[1,j-1]</code> 区间的最长公共子序列长度再加上 1，即 <code>dp[i][j] = dp[i - 1][j - 1] + 1</code>。（注意下标从 1 开始）</p>
+<p><a target="_blank" rel="noopener" href="https://img.z4a.net/image/image.2ZIWj"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.z4a.net/images/2025/02/14/image.png"
+                      alt="image"
+                ></a></p>
+</li>
+<li><p>若 <code>text1[i] != text2[j]</code>，也就是说两个字符串的最后一位<strong>不相等</strong>，那么字符串 text1 的 <code>[1,i]</code> 区间和字符串 text2 的 <code>[1,j]</code> 区间的最长公共子序列长度无法延长，因此 <code>dp[i][j]</code> 就会继承 <code>dp[i-1][j]</code> 与 <code>dp[i][j-1]</code> 中的较大值，即 <code>dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])</code> 。 （注意下标从 1 开始）</p>
+<p><a target="_blank" rel="noopener" href="https://img.z4a.net/image/image.2Z2bd"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.z4a.net/images/2025/02/14/imageaae22355ba287fe2.png"
+                      alt="image"
+                ></a></p>
+</li>
+</ol>
+<p>由此，我们可以得到状态转移方程：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (text1[i] === text2[j]) &#123;</span><br><span class="line">  dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  dp[i][j] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>第三步，确定迭代的方向和范围。</p>
+<p>显然，迭代的方向是自底向上，从 <code>dp[0][0]</code> 开始，一直到 <code>dp[m][n]</code> 结束。</p>
+<p>第四步，确定基础状态。</p>
+<p>空字符串与任意长度的字符串的最长公共子序列长度一定为 0，所以，我们可以将 <code>dp[i][0]</code> 和 <code>dp[0][j]</code> 都置为 0。同时，注意这题里要提前把溢出情况比如 <code>dp[-1][0]</code>、<code>dp[-1][-1]</code> 考虑进去，防止访问时报错，比如在求解 <code>dp[0][0]</code> 并且两个字符串的第 0 位都相同的时候就会转而去求 <code>dp[-1][-1]</code>，这里我们可以将 dp 数组在两个维度都多扩展一位，这样就不会出现溢出的情况了。</p>
+<p>所以我们可以进行如下的初始化：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dp = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i1 = <span class="number">0</span>; i1 &lt;= text1.<span class="property">length</span>; i1++) &#123;</span><br><span class="line">    dp[i1] = []</span><br><span class="line">    dp[i1][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">dp[<span class="number">0</span>] = <span class="title class_">Array</span>(text2.<span class="property">length</span> + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>最后，第五步，将状态转移方程塞入迭代过程，进行迭代。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">text1</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">text2</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> longestCommonSubsequence = <span class="keyword">function</span> (<span class="params">text1, text2</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> n1 = text1.<span class="property">length</span></span><br><span class="line">    <span class="keyword">let</span> n2 = text2.<span class="property">length</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> dp = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i1 = <span class="number">0</span>; i1 &lt;= n1; i1++) &#123;</span><br><span class="line">        dp[i1] = []</span><br><span class="line">        dp[i1][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="title class_">Array</span>(n2 + <span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i1 = <span class="number">1</span>; i1 &lt;= n1; i1++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i2 = <span class="number">1</span>; i2 &lt;= n2; i2++) &#123;</span><br><span class="line">            <span class="keyword">let</span> str1 = text1[i1 - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">let</span> str2 = text2[i2 - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (str1 === str2) &#123;</span><br><span class="line">                dp[i1][i2] = <span class="number">1</span> + dp[i1 - <span class="number">1</span>][i2 - <span class="number">1</span>]</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i1][i2] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[i1 - <span class="number">1</span>][i2], dp[i1][i2 - <span class="number">1</span>])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[n1][n2]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>为什么这道题可以作为模型来学习？因为其中包含了两个基本的【解题套路】：</p>
+<ul>
+<li>对于二维字符串动态规划问题，我们可以通过对<strong>两者最后一位字符的差异</strong>进行穷举来找到状态之间的转移关系；</li>
+<li>对于二维动态规划问题，我们常常把动态规划定义成两维的 <code>dp[i][j]</code> ，其含义是在 <code>A[0:i]</code> 与 <code>B[0:j]</code> 之间匹配得到的想要的结果。</li>
+</ul>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 动态规划的常见模型</li>
+        <li><strong>作者:</strong> 6dianbiqi</li>
+        <li><strong>创建于
+                :</strong> 2025-02-16 12:25:17</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2025-02-16 13:41:24
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://github.com/xz719/2025/02/16/动态规划的常见模型/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/07/02/js-%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">js-原型与原型链</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">动态规划的常见模型</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">动态规划的常见模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%EF%B8%8F%E2%83%A3-0-1-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-text">1️⃣ 0-1 背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">1.1 问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-text">1.2 问题分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E7%A9%BA%E9%97%B4%E4%BC%98%E5%8C%96-%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84"><span class="nav-text">1.3 空间优化 - 滚动数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%EF%B8%8F%E2%83%A3-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98"><span class="nav-text">2️⃣ 最长上升子序列问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">2.1 问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-text">2.2 问题分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%9B%BE%E5%83%8F%E5%88%86%E6%9E%90"><span class="nav-text">2.3 图像分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">2.4 代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%EF%B8%8F%E2%83%A3-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B"><span class="nav-text">3️⃣ 最长公共子序列模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">3.1 问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-text">3.2 问题分析</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">6dianbiqi</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 11 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.2</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
